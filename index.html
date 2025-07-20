@@ -42,7 +42,7 @@
             color: var(--dark);
             background-color: var(--light);
             line-height: 1.7;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scrolling on body */
         }
 
         h1, h2, h3, h4, h5 {
@@ -55,7 +55,7 @@
         .container {
             max-width: 1320px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 2rem; /* Default padding */
         }
 
         .btn {
@@ -538,6 +538,70 @@
             box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
         }
 
+        /* AI Recommendations Section */
+        .ai-recommendations {
+            background: var(--navy-light);
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            margin-top: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .ai-recommendations.active {
+            display: flex;
+        }
+
+        .ai-recommendations h3 {
+            font-size: 1.8rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        .ai-recommendations ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .ai-recommendations ul li {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .ai-recommendations ul li:hover {
+            background: var(--gold);
+            color: var(--navy-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .ai-loading-indicator {
+            display: none;
+            margin-top: 1rem;
+            color: var(--gold);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .ai-loading-indicator.active {
+            display: block;
+        }
+
         /* Service Modal */
         .service-modal {
             position: fixed;
@@ -568,7 +632,7 @@
             max-height: 90vh;
             overflow-y: auto;
             position: relative;
-            padding: 3rem;
+            padding: 3rem; /* Default padding */
             box-shadow: var(--shadow-xl);
         }
 
@@ -687,21 +751,21 @@
         }
 
         .whatsapp-contact {
-            display: inline-flex; /* Changed from flex to inline-flex */
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem; /* Adjusted gap */
+            gap: 0.75rem;
             background: #25d366;
             color: white;
-            padding: 0.8rem 1.5rem; /* Adjusted padding */
+            padding: 0.8rem 1.5rem;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            margin-top: 1.5rem; /* Adjusted margin */
+            margin-top: 1.5rem;
             transition: var(--transition);
-            font-size: 0.95rem; /* Adjusted font size */
-            border: none; /* Ensure it looks like a button */
-            cursor: pointer; /* Indicate it's clickable */
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
         }
 
         .whatsapp-contact:hover {
@@ -798,233 +862,151 @@
         .portfolio-overlay p {
             opacity: 0.8;
         }
-  /* Contact */
-.contact {
-    padding: 6rem 0;
-    background: linear-gradient(135deg, var(--navy), var(--navy-dark)); /* Softer, more blended gradient */
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
+        /* Contact */
+        .contact {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--navy), var(--navy-dark)); /* Softer, more blended gradient */
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
-.contact::before {
-    content: '';
-    position: absolute;
-    bottom: -150px; /* Adjusted for larger size */
-    left: -150px;  /* Adjusted for larger size */
-    width: 500px;  /* Increased size */
-    height: 500px; /* Increased size */
-    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); /* Lighter gold gradient */
-    border-radius: 50%;
-    opacity: 0.08; /* Slightly less opaque */
-    z-index: 0;
-    filter: blur(50px); /* Add a blur effect for a softer look */
-}
+        .contact::before {
+            content: '';
+            position: absolute;
+            bottom: -150px; /* Adjusted for larger size */
+            left: -150px;  /* Adjusted for larger size */
+            width: 500px;  /* Increased size */
+            height: 500px; /* Increased size */
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 100%); /* Lighter gold gradient */
+            border-radius: 50%;
+            opacity: 0.08; /* Slightly less opaque */
+            z-index: 0;
+            filter: blur(50px); /* Add a blur effect for a softer look */
+        }
 
-.contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    position: relative;
-    z-index: 1;
-    align-items: start; /* Align items to the start of their grid area */
-}
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            position: relative;
+            z-index: 1;
+            align-items: start; /* Align items to the start of their grid area */
+        }
 
-.contact-info h2 {
-    color: white;
-    font-size: 2.8rem; /* Slightly larger */
-    margin-bottom: 2.5rem; /* More spacing */
-    font-weight: 700; /* Ensure it's bold */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
-}
+        .contact-info h2 {
+            color: white;
+            font-size: 2.8rem; /* Slightly larger */
+            margin-bottom: 2.5rem; /* More spacing */
+            font-weight: 700; /* Ensure it's bold */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle text shadow */
+        }
 
-.contact-item {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 2.5rem; /* Increased margin for better separation */
-    align-items: center; /* Center align icon and text for better visual balance */
-}
+        .contact-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem; /* Increased margin for better separation */
+            align-items: center; /* Center align icon and text for better visual balance */
+        }
 
-.contact-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--gold); /* Solid gold background */
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem; /* Slightly larger icon */
-    color: var(--navy); /* Darker color for icon against gold */
-    flex-shrink: 0;
-    box-shadow: var(--shadow-sm); /* Add a subtle shadow */
-}
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gold); /* Solid gold background */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem; /* Slightly larger icon */
+            color: var(--navy); /* Darker color for icon against gold */
+            flex-shrink: 0;
+            box-shadow: var(--shadow-sm); /* Add a subtle shadow */
+        }
 
-.contact-details h3 {
-    color: white;
-    font-size: 1.35rem; /* Slightly larger */
-    margin-bottom: 0.4rem; /* Reduced margin for closer title and paragraph */
-    font-weight: 600;
-}
+        .contact-details h3 {
+            color: white;
+            font-size: 1.35rem; /* Slightly larger */
+            margin-bottom: 0.4rem; /* Reduced margin for closer title and paragraph */
+            font-weight: 600;
+        }
 
-.contact-details p {
-    opacity: 0.9; /* Slightly less transparent for better readability */
-    line-height: 1.6; /* Improved line height */
-}
+        .contact-details p {
+            opacity: 0.9; /* Slightly less transparent for better readability */
+            line-height: 1.6; /* Improved line height */
+        }
 
-.contact-form {
-    background: var(--light); /* Using a light variable for consistency */
-    padding: 3.5rem; /* Slightly more padding */
-    border-radius: 18px; /* Slightly more rounded corners */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger, softer shadow */
-}
+        .contact-form {
+            background: var(--light); /* Using a light variable for consistency */
+            padding: 3.5rem; /* Slightly more padding */
+            border-radius: 18px; /* Slightly more rounded corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Stronger, softer shadow */
+        }
 
-.contact-form h3 {
-    font-size: 2rem; /* Larger font size */
-    margin-bottom: 2rem; /* More space below heading */
-    color: var(--navy-dark); /* Deeper navy for heading */
-    text-align: center; /* Center align heading */
-    font-weight: 700;
-}
+        .contact-form h3 {
+            font-size: 2rem; /* Larger font size */
+            margin-bottom: 2rem; /* More space below heading */
+            color: var(--navy-dark); /* Deeper navy for heading */
+            text-align: center; /* Center align heading */
+            font-weight: 700;
+        }
 
-.form-group {
-    margin-bottom: 1.8rem; /* Increased margin for better separation */
-}
+        .form-group {
+            margin-bottom: 1.8rem; /* Increased margin for better separation */
+        }
 
-.form-group label {
-    display: block;
-    margin-bottom: 0.7rem; /* More space between label and input */
-    font-weight: 600; /* Slightly bolder labels */
-    color: var(--navy);
-    font-size: 0.95rem; /* Slightly smaller font size for labels */
-}
+        .form-group label {
+            display: block;
+            margin-bottom: 0.7rem; /* More space between label and input */
+            font-weight: 600; /* Slightly bolder labels */
+            color: var(--navy);
+            font-size: 0.95rem; /* Slightly smaller font size for labels */
+        }
 
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    padding: 1.2rem 1.5rem; /* Increased vertical padding */
-    border: 1px solid var(--gray); /* Use a variable for border color */
-    border-radius: 10px; /* Slightly more rounded corners */
-    font-size: 1.05rem; /* Slightly larger text in inputs */
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
-    font-family: 'Poppins', sans-serif;
-    color: var(--dark); /* Ensure text color is dark */
-}
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem 1.5rem; /* Increased vertical padding */
+            border: 1px solid var(--gray); /* Use a variable for border color */
+            border-radius: 10px; /* Slightly more rounded corners */
+            font-size: 1.05rem; /* Slightly larger text in inputs */
+            transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smoother transition */
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark); /* Ensure text color is dark */
+        }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--gold-dark); /* Darker gold on focus */
-    box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); /* Stronger, softer shadow on focus */
-}
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold-dark); /* Darker gold on focus */
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.3); /* Stronger, softer shadow on focus */
+        }
 
-.form-group textarea {
-    resize: vertical;
-    min-height: 180px; /* Slightly increased min-height for textarea */
-}
+        .form-group textarea {
+            resize: vertical;
+            min-height: 180px; /* Slightly increased min-height for textarea */
+        }
 
-/* Media Queries for Contact Section */
-@media (max-width: 992px) {
-    .contact-grid {
-        grid-template-columns: 1fr; /* Stacks columns on smaller screens */
-        gap: 3rem; /* Reduced gap when stacked */
-    }
+        /* AI Contact Form Suggestions */
+        .ai-contact-suggestions {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--off-white);
+            border-left: 4px solid var(--gold);
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: var(--dark-gray);
+            display: none; /* Hidden by default */
+        }
 
-    .contact-info h2 {
-        font-size: 2.2rem; /* Adjusted font size for tablets */
-        text-align: center; /* Center align heading on smaller screens */
-    }
+        .ai-contact-suggestions.active {
+            display: block;
+        }
 
-    .contact-item {
-        margin-bottom: 2rem; /* Slightly reduced margin */
-        justify-content: center; /* Center align items in stacked layout */
-        text-align: center; /* Center align text for contact items */
-        flex-direction: column; /* Stack icon and text vertically */
-    }
+        .ai-contact-suggestions .loading {
+            color: var(--gold);
+            font-style: italic;
+        }
 
-    .contact-icon {
-        margin-bottom: 0.5rem; /* Space between icon and text when stacked */
-    }
-
-    .contact-details h3,
-    .contact-details p {
-        text-align: center; /* Ensure text is centered */
-    }
-
-    .contact-form {
-        padding: 2.5rem; /* Reduced padding for smaller screens */
-    }
-
-    .contact-form h3 {
-        font-size: 1.7rem; /* Adjusted font size for form heading */
-    }
-}
-
-@media (max-width: 576px) {
-    .contact {
-        padding: 4rem 0; /* Further reduced vertical padding for very small screens */
-    }
-
-    .contact-info h2 {
-        font-size: 1.8rem; /* Smaller font size for very small screens */
-        margin-bottom: 1.5rem;
-    }
-
-    .contact-item {
-        gap: 1rem; /* Reduced gap */
-        margin-bottom: 1.5rem; /* Reduced margin */
-    }
-
-    .contact-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-
-    .contact-details h3 {
-        font-size: 1.1rem;
-    }
-
-    .contact-details p {
-        font-size: 0.9rem;
-    }
-
-    .contact-form {
-        padding: 1.5rem; /* Significantly reduced padding for very small screens */
-    }
-
-    .contact-form h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .form-group {
-        margin-bottom: 1.2rem;
-    }
-
-    .form-group input,
-    .form-group textarea {
-        padding: 0.8rem 1rem; /* Smaller padding for inputs */
-        font-size: 0.95rem;
-    }
-
-    .form-group textarea {
-        min-height: 120px; /* Reduced min-height for textarea */
-    }
-
-    /* Services Hub specific mobile fix */
-    .services-grid {
-        grid-template-columns: 1fr; /* Force single column on very small screens */
-        gap: 1.5rem; /* Adjust gap for smaller screens */
-        padding: 1rem 0; /* Adjust padding for smaller screens */
-    }
-
-    .service-card {
-        padding: 1.5rem; /* Reduce card padding on small screens */
-    }
-}
-
-
-        
         /* Footer */
         footer {
             background: var(--navy-dark);
@@ -1261,35 +1243,47 @@
             top: 0;
         }
 
+        /* Media Queries */
         @media (max-width: 992px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+            .contact-grid,
             .about-content {
-                grid-template-columns: 1fr;
-                text-align: center;
+                grid-template-columns: 1fr; /* Stacks columns on tablets and smaller */
+                gap: 3rem;
             }
             .about-image {
                 order: 2; /* Image below text on small screens */
             }
             .about-text {
                 order: 1;
+                text-align: center;
             }
             .about-text ul {
                 text-align: left;
-                padding-left: 0; /* Adjust for smaller screens */
+                padding-left: 0;
+            }
+            .modal-content {
+                padding: 2rem; /* Reduce modal padding for tablets */
             }
         }
 
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: clamp(2.2rem, 8vw, 3.5rem); /* Adjust hero heading size */
+            }
+            .hero p {
+                font-size: 1.1rem; /* Adjust hero paragraph size */
+            }
             .hub-header h1 {
                 font-size: 2rem;
             }
             .service-filters {
-                flex-direction: column;
+                flex-direction: column; /* Stack filter buttons vertically */
+                gap: 0.75rem; /* Reduce gap between stacked buttons */
             }
             .filter-btn {
-                width: 100%;
+                width: 100%; /* Make filter buttons take full width */
+                padding: 0.6rem 1.5rem; /* Adjust padding */
+                font-size: 0.95rem; /* Adjust font size */
             }
             .nav-menu {
                 position: fixed;
@@ -1340,6 +1334,160 @@
 
             .mobile-toggle.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .service-search input {
+                padding: 0.8rem 1.2rem; /* Adjust search input padding */
+                font-size: 1rem;
+            }
+            .search-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1rem; /* Further reduce container padding on very small screens */
+            }
+            .hero {
+                padding: 100px 0 60px; /* Adjust hero padding */
+            }
+            .hero h1 {
+                font-size: clamp(2rem, 10vw, 3rem); /* Smaller hero heading */
+            }
+            .hero p {
+                font-size: 1rem; /* Smaller hero paragraph */
+            }
+            .logo-text h1 {
+                font-size: 1.3rem; /* Further reduce logo text size on very small screens */
+            }
+            .logo-text span {
+                font-size: 0.6rem; /* Further reduce logo sub-text size */
+            }
+
+            .section-header h2 {
+                font-size: clamp(1.8rem, 8vw, 2.5rem); /* Smaller section headings */
+            }
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr; /* Stack features on very small screens */
+            }
+            .feature-card {
+                padding: 2rem; /* Adjust feature card padding */
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr; /* Force single column for service cards */
+                gap: 1.5rem; /* Adjust gap for smaller screens */
+                padding: 1rem 0; /* Adjust padding for smaller screens */
+            }
+            .service-card {
+                padding: 1.5rem; /* Reduce service card padding */
+            }
+
+            .modal-content {
+                padding: 1.5rem; /* Significantly reduced modal padding for very small screens */
+            }
+            .modal-header h2 {
+                font-size: 1.6rem;
+            }
+            .modal-header p {
+                font-size: 1rem;
+            }
+            .service-pricing-grid {
+                grid-template-columns: 1fr; /* Stack pricing items */
+            }
+            .service-item {
+                padding: 1rem; /* Adjust pricing item padding */
+            }
+            .service-item h3 {
+                font-size: 1.1rem;
+            }
+            .service-price {
+                font-size: 1.5rem;
+            }
+            .service-description {
+                font-size: 0.85rem;
+            }
+            .service-gallery {
+                grid-template-columns: 1fr; /* Stack gallery images */
+            }
+            .order-form-container {
+                padding: 1.5rem; /* Adjust form container padding */
+            }
+            .order-form-container h4 {
+                font-size: 1.3rem;
+            }
+            .order-form-container .form-group input,
+            .order-form-container .form-group textarea,
+            .order-form-container .form-group select {
+                padding: 0.6rem 0.8rem; /* Smaller form inputs */
+                font-size: 0.9rem;
+            }
+            .order-form-container .submit-btn {
+                padding: 0.8rem;
+                font-size: 1rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* Stack portfolio items */
+            }
+
+            .contact {
+                padding: 4rem 0; /* Further reduced vertical padding for very small screens */
+            }
+            .contact-info h2 {
+                font-size: 1.8rem; /* Smaller font size for very small screens */
+                margin-bottom: 1.5rem;
+            }
+            .contact-item {
+                gap: 1rem; /* Reduced gap */
+                margin-bottom: 1.5rem; /* Reduced margin */
+            }
+            .contact-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            .contact-details h3 {
+                font-size: 1.1rem;
+            }
+            .contact-details p {
+                font-size: 0.9rem;
+            }
+            .contact-form {
+                padding: 1.5rem; /* Significantly reduced padding for very small screens */
+            }
+            .contact-form h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+            .form-group {
+                margin-bottom: 1.2rem;
+            }
+            .form-group input,
+            .form-group textarea {
+                padding: 0.8rem 1rem; /* Smaller padding for inputs */
+                font-size: 0.95rem;
+            }
+            .form-group textarea {
+                min-height: 120px; /* Reduced min-height for textarea */
+            }
+            .footer-grid {
+                grid-template-columns: 1fr; /* Stack footer columns */
+                gap: 2rem;
+            }
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 20px;
+                right: 20px;
             }
         }
     </style>
@@ -1576,6 +1724,15 @@
                     <a href="#" class="order-btn" data-modal-target="construction-services-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
+
+            <!-- AI Recommendations Section -->
+            <div class="ai-recommendations" id="aiRecommendations">
+                <h3>You might also be interested in...</h3>
+                <div class="ai-loading-indicator" id="aiRecommendationsLoading">Loading suggestions...</div>
+                <ul id="aiRecommendationsList">
+                    <!-- AI suggested services will be inserted here -->
+                </ul>
+            </div>
         </div>
     </section>
 
@@ -1724,6 +1881,10 @@
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                            <!-- AI Contact Form Suggestions -->
+                            <div class="ai-contact-suggestions" id="contactSuggestions">
+                                <span class="loading">Thinking...</span>
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
@@ -2669,6 +2830,11 @@
                         <i class="fab fa-whatsapp"></i> Order Now
                     </button>
                 </div>
+            </div>
+            <div class="service-gallery">
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+1" alt="Logo Design Example 1"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+2" alt="Logo Design Example 2"></div>
+                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+3" alt="Logo Design Example 3"></div>
             </div>
             <div class="order-form-container" id="form-bc-standard" style="display: none;">
                 <h4>Place Your Standard Business Card Design Order</h4>
@@ -4217,43 +4383,197 @@
             const filterBtns = document.querySelectorAll('.filter-btn');
             const serviceCards = document.querySelectorAll('.services-grid .service-card');
             const searchInput = document.getElementById('serviceSearch');
+            const aiRecommendations = document.getElementById('aiRecommendations');
+            const aiRecommendationsList = document.getElementById('aiRecommendationsList');
+            const aiRecommendationsLoading = document.getElementById('aiRecommendationsLoading');
+
+            // List of all available services for AI to recommend from
+            const allServiceNames = Array.from(serviceCards).map(card => card.querySelector('h3').textContent.trim());
+
+            // Function to get AI recommendations
+            async function getAiRecommendations(query, currentServices) {
+                aiRecommendations.classList.add('active'); // Show recommendations section
+                aiRecommendationsList.innerHTML = ''; // Clear previous recommendations
+                aiRecommendationsLoading.classList.add('active'); // Show loading indicator
+
+                const prompt = `Given the following list of services: ${allServiceNames.join(', ')}. The user is currently interested in "${query}". Suggest 2-3 other related services from the provided list that they might find useful. Respond with only the service names, separated by commas. Do not include any introductory or concluding remarks.`;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Leave as-is for Canvas to provide
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        const recommendedServices = text.split(',').map(s => s.trim()).filter(s => s !== '');
+
+                        // Filter out services already displayed or too similar to the current query
+                        const filteredRecommendations = recommendedServices.filter(rec => 
+                            !currentServices.some(curr => curr.toLowerCase().includes(rec.toLowerCase())) &&
+                            !query.toLowerCase().includes(rec.toLowerCase())
+                        );
+
+                        if (filteredRecommendations.length > 0) {
+                            filteredRecommendations.slice(0, 3).forEach(service => { // Limit to 3 recommendations
+                                const listItem = document.createElement('li');
+                                listItem.textContent = service;
+                                // Add click listener to filter by this recommended service
+                                listItem.addEventListener('click', () => {
+                                    const matchingCard = Array.from(serviceCards).find(card => 
+                                        card.querySelector('h3').textContent.toLowerCase().includes(service.toLowerCase())
+                                    );
+                                    if (matchingCard) {
+                                        const category = matchingCard.getAttribute('data-category');
+                                        const filterButton = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+                                        if (filterButton) {
+                                            filterButton.click(); // Simulate click on filter button
+                                            searchInput.value = service; // Set search input to recommended service
+                                            aiRecommendations.classList.remove('active'); // Hide recommendations
+                                        }
+                                    }
+                                });
+                                aiRecommendationsList.appendChild(listItem);
+                            });
+                        } else {
+                            aiRecommendationsList.innerHTML = '<li>No further suggestions at this time.</li>';
+                        }
+                    } else {
+                        aiRecommendationsList.innerHTML = '<li>Could not load suggestions.</li>';
+                    }
+                } catch (error) {
+                    console.error('Error fetching AI recommendations:', error);
+                    aiRecommendationsList.innerHTML = '<li>Error loading suggestions. Please try again.</li>';
+                } finally {
+                    aiRecommendationsLoading.classList.remove('active'); // Hide loading indicator
+                }
+            }
 
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Remove active class from all buttons
                     filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active class to clicked button
                     btn.classList.add('active');
                     
                     const filter = btn.getAttribute('data-filter');
-                    
+                    let displayedServices = [];
+
                     serviceCards.forEach(card => {
                         if (filter === 'all' || card.getAttribute('data-category') === filter) {
                             card.style.display = 'block';
+                            displayedServices.push(card.querySelector('h3').textContent.trim());
                         } else {
                             card.style.display = 'none';
                         }
                     });
+
+                    // Trigger AI recommendation after filtering
+                    if (filter !== 'all') { // Only recommend if a specific filter is applied
+                        getAiRecommendations(filter, displayedServices);
+                    } else {
+                        aiRecommendations.classList.remove('active'); // Hide if 'All Services' is selected
+                    }
                 });
             });
 
             // Search functionality
+            let searchTimeout;
             searchInput.addEventListener('input', (e) => {
+                clearTimeout(searchTimeout);
                 const searchTerm = e.target.value.toLowerCase();
                 
-                serviceCards.forEach(card => {
-                    const title = card.querySelector('h3').textContent.toLowerCase();
-                    const category = card.getAttribute('data-category').toLowerCase();
-                    // Check if current filter is 'all' or active filter matches card's category
-                    const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                    const matchesFilter = (activeFilter === 'all' || category === activeFilter);
+                searchTimeout = setTimeout(() => {
+                    let displayedServices = [];
+                    serviceCards.forEach(card => {
+                        const title = card.querySelector('h3').textContent.toLowerCase();
+                        const category = card.getAttribute('data-category').toLowerCase();
+                        const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
+                        const matchesFilter = (activeFilter === 'all' || category === activeFilter);
 
-                    if (matchesFilter && title.includes(searchTerm)) {
-                        card.style.display = 'block';
+                        if (matchesFilter && title.includes(searchTerm)) {
+                            card.style.display = 'block';
+                            displayedServices.push(card.querySelector('h3').textContent.trim());
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+
+                    // Trigger AI recommendation after search
+                    if (searchTerm.length > 2) { // Only recommend if search term is long enough
+                        getAiRecommendations(searchTerm, displayedServices);
                     } else {
-                        card.style.display = 'none';
+                        aiRecommendations.classList.remove('active'); // Hide if search term is too short
                     }
-                });
+                }, 500); // Debounce search input
+            });
+
+
+            // AI Contact Form Assistant
+            const messageTextarea = document.getElementById('message');
+            const contactSuggestionsDiv = document.getElementById('contactSuggestions');
+            let contactSuggestionTimeout;
+
+            async function getContactSuggestions(query) {
+                contactSuggestionsDiv.classList.add('active');
+                contactSuggestionsDiv.innerHTML = '<span class="loading">Thinking...</span>';
+
+                const prompt = `A user is typing "${query}" in a contact form message. Suggest 2-3 concise common questions or next steps related to this inquiry. Respond as a comma-separated list of questions. Do not include any introductory or concluding remarks. If the query is too short or unclear, respond with general questions like "How can I help you?".`;
+
+                try {
+                    let chatHistory = [];
+                    chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                    const payload = { contents: chatHistory };
+                    const apiKey = ""; // Leave as-is for Canvas to provide
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        const suggestions = text.split(',').map(s => s.trim()).filter(s => s !== '');
+                        
+                        if (suggestions.length > 0) {
+                            contactSuggestionsDiv.innerHTML = '<strong>Common questions:</strong> ' + suggestions.join(', ');
+                        } else {
+                            contactSuggestionsDiv.innerHTML = 'No specific suggestions. How can I help you?';
+                        }
+                    } else {
+                        contactSuggestionsDiv.innerHTML = 'Could not load suggestions.';
+                    }
+                } catch (error) {
+                    console.error('Error fetching AI contact suggestions:', error);
+                    contactSuggestionsDiv.innerHTML = 'Error loading suggestions.';
+                }
+            }
+
+            messageTextarea.addEventListener('input', (e) => {
+                clearTimeout(contactSuggestionTimeout);
+                const query = e.target.value.trim();
+
+                if (query.length > 5) { // Trigger suggestions after a few characters
+                    contactSuggestionTimeout = setTimeout(() => {
+                        getContactSuggestions(query);
+                    }, 700); // Debounce input for contact suggestions
+                } else {
+                    contactSuggestionsDiv.classList.remove('active');
+                    contactSuggestionsDiv.innerHTML = '';
+                }
             });
         });
     </script>
