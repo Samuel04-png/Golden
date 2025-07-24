@@ -206,6 +206,144 @@
             transition: var(--transition);
             border-radius: 2px;
         }
+        /* Stats Section */
+        .stats {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 100%);
+            padding: 5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 300px;
+            height: 300px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .stats::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--gold);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 2.5rem 1.5rem;
+            text-align: center;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            font-size: 2rem;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-icon {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.1);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            transition: var(--transition);
+        }
+
+        .stat-card:hover .stat-number {
+            transform: scale(1.05);
+        }
+
+        .stat-title {
+            font-size: 1.25rem;
+            color: var(--white);
+            font-weight: 500;
+        }
 
         /* Hero Section (ZamServe Hub) */
         .hero {
@@ -1546,10 +1684,64 @@
                 <button class="filter-btn" data-filter="office-supplies">Office Supplies</button>
                 <button class="filter-btn" data-filter="construction">Construction</button>
                 <button class="filter-btn" data-filter="supply">Supply</button>
-                <button class="filter-btn" data-filter="e-ticketing">E-Ticketing</button> <!-- New Filter Button -->
+                <button class="filter-btn" data-filter="e-ticketing">E-Ticketing</button> 
+                <button class="filter-btn" data-filter="immigration">E-Passport Assist</button>
+                <button class="filter-btn" data-filter="business-registration">ZamServe Customs Assist</button>
+                <button class="filter-btn" data-filter="business-registration">Invoice & Quotation Maker</button>
+                <button class="filter-btn" data-filter="immigration">Driving License Support</button>
+                <button class="filter-btn" data-filter="business-registration">Trademark & IP Registration</button>
+                <button class="filter-btn" data-filter="immigration">Travel & Visa Booking</button><!-- New Filter Button -->
             </div>
 
             <div class="services-grid">
+                <!-- e-Passport Assist -->
+
+                <div class="service-card featured" data-service="e-passport-assist" data-category="immigration">
+                    <div class="service-icon"><i class="fas fa-passport"></i></div>
+                    <h3>e-Passport Assist</h3>
+                    <p>Complete passport processing support for Zambian citizens. New applications, renewals, and replacements.</p>
+                    <a href="#" class="order-btn" data-modal-target="e-passport-assist-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <!-- ZamServe Customs Assist -->
+                <div class="service-card" data-service="zamserve-customs-assist" data-category="business-registration">
+                    <div class="service-icon"><i class="fas fa-shipping-fast"></i></div>
+                    <h3>ZamServe Customs Assist</h3>
+                    <p>Vehicle and container clearing & forwarding services with real-time tracking and duty estimates.</p>
+                    <a href="#" class="order-btn" data-modal-target="zamserve-customs-assist-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <!-- Invoice & Quotation Maker -->
+                <div class="service-card" data-service="invoice-quotation-maker" data-category="business-registration">
+                    <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                    <h3>Invoice & Quotation Maker</h3>
+                    <p>Create professional invoices and quotations instantly with PDF generation and VAT support.</p>
+                    <a href="#" class="order-btn" data-modal-target="invoice-quotation-maker-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+                <!-- Driving License Support -->
+
+                <div class="service-card" data-service="driving-license-support" data-category="immigration">
+                    <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                    <h3>Driving License Support</h3>
+                    <p>Complete driving license application assistance including RTSA booking and courier services.</p>
+                    <a href="#" class="order-btn" data-modal-target="driving-license-support-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+                <!-- Trademark & IP Registration -->
+                <div class="service-card featured" data-service="trademark-ip-registration" data-category="business-registration">
+                    <div class="service-icon"><i class="fas fa-copyright"></i></div>
+                    <h3>Trademark & IP Registration</h3>
+                    <p>Protect your intellectual property with PACRA/ARIPO registration and legal template support.</p>
+                    <a href="#" class="order-btn" data-modal-target="trademark-ip-registration-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+                <!-- Travel & Visa Booking -->
+                <div class="service-card" data-service="travel-visa-booking" data-category="immigration">
+                    <div class="service-icon"><i class="fas fa-plane"></i></div>
+                    <h3>Travel & Visa Booking</h3>
+                    <p>Flight bookings and visa application support with tour packages and document checklist assistance.</p>
+                    <a href="#" class="order-btn" data-modal-target="travel-visa-booking-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+                </div>
+                
+
                 <!-- New E-Ticketing Service Card -->
                 <div class="service-card featured" data-service="e-ticketing" data-category="e-ticketing">
                     <div class="service-icon"><i class="fas fa-bus"></i></div>
@@ -1557,7 +1749,7 @@
                     <p>Book your bus tickets with ease across Zambia. Convenient and reliable.</p>
                     <a href="#" class="order-btn" data-modal-target="e-ticketing-modal">Book Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-
+                
                 <div class="service-card featured" data-service="pacra-registration" data-category="business-registration">
                     <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
                     <h3>PACRA Registration</h3>
@@ -1736,6 +1928,8 @@
         </div>
     </section>
 
+    
+
     <section class="about" id="about">
         <div class="container">
             <div class="section-header">
@@ -1760,6 +1954,113 @@
             </div>
         </div>
     </section>
+    <section class="stats">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Impact</h2>
+                <p>Driving success through exceptional service and proven results</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" data-target="2500">0</div>
+                    <div class="stat-title">Active Users</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number" data-target="24">0</div>
+                    <div class="stat-title">Hrs Avg Processing</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="stat-number" data-target="99.8">0</div>
+                    <div class="stat-title">Success Rate</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-number" data-target="15">0</div>
+                    <div class="stat-title">Services & Growing</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Animated counters
+        document.addEventListener('DOMContentLoaded', function() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const statsSection = document.querySelector('.stats');
+            
+            let animated = false;
+            
+            function animateStats() {
+                if (animated) return;
+                
+                statNumbers.forEach(stat => {
+                    const target = parseFloat(stat.getAttribute('data-target'));
+                    const duration = 2000; // 2 seconds
+                    const startTime = Date.now();
+                    
+                    function updateCounter() {
+                        const currentTime = Date.now();
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Ease-out effect
+                        const easeProgress = 1 - Math.pow(1 - progress, 3);
+                        
+                        // Determine if we're dealing with a decimal number
+                        if (target % 1 !== 0) {
+                            const currentValue = easeProgress * target;
+                            stat.textContent = currentValue.toFixed(1);
+                        } else {
+                            const currentValue = Math.floor(easeProgress * target);
+                            stat.textContent = currentValue;
+                        }
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
+                        } else {
+                            // Add plus sign for whole numbers
+                            if (target % 1 === 0 && stat !== statNumbers[2]) {
+                                stat.textContent = target + '+';
+                            } else if (stat === statNumbers[2]) {
+                                stat.textContent = target.toFixed(1) + '%';
+                            }
+                        }
+                    }
+                    
+                    requestAnimationFrame(updateCounter);
+                });
+                
+                animated = true;
+            }
+            
+            // Intersection Observer to trigger animation when section is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(statsSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(statsSection);
+        });
+    </script>
 
     <section class="features" id="features">
         <div class="container">
@@ -1921,10 +2222,17 @@
                     <li><a href="#" data-modal-target="pacra-registration-modal">Business Registration</a></li>
                     <li><a href="#" data-modal-target="work-permit-modal">Immigration Services</a></li>
                     <li><a href="#" data-modal-target="logo-design-modal">Design & Branding</a></li>
+                    <li><a href="#" data-modal-target="e-Passport-Assist-modal">E-Passport Assistance</a></li>
                     <li><a href="#" data-modal-target="document-printing-modal">Printing Services</a></li>
                     <li><a href="#" data-modal-target="business-proposals-modal">Academic & Business Writing</a></li>
                     <li><a href="#" data-modal-target="general-office-supplies-modal">Office Supplies</a></li>
-                    <li><a href="#" data-modal-target="e-ticketing-modal">E-Ticketing</a></li> <!-- New Footer Link -->
+                    <li><a href="#" data-modal-target="e-ticketing-modal">E-Ticketing</a></li> 
+                    <li><a href="#" data-modal-target="zamserve-customs-assist-modal">ZamServe-Customs-Assist</a></li>
+                    <li><a href="#" data-modal-target="Invoice-Quotation-Maker-modal">Invoice-Quotation-Maker</a></li>
+                    <li><a href="#" data-modal-target="driving-license-support-modal">Driving-License-Support</a></li>
+                    <li><a href="#" data-modal-target="trademark-ip-registration-modal">Trademark-IP-Registration</a></li>
+                    <li><a href="#" data-modal-target="travel-visa-booking-modal">Travel-Visa-Booking</a></li>
+                    <!-- New Footer Link -->
                 </ul>
             </div>
             <div class="footer-column">
@@ -1942,7 +2250,739 @@
     <a href="https://wa.me/260971234567" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+<!-- Trademark & IP Registration Modal -->
+<div class="service-modal" id="trademark-ip-registration-modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Trademark & IP Registration</h2>
+            <p>Protect your intellectual property with PACRA/ARIPO registration services.</p>
+        </div>
+        <div class="service-pricing-grid">
+            <div class="service-item">
+                <h3>PACRA Trademark Registration</h3>
+                <p class="service-price">ZMW 1,500 - 3,000</p>
+                <p class="service-time">10-15 Business Days</p>
+                <p class="service-description">Local trademark registration through PACRA with search and filing.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-trademark-pacra">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>ARIPO Filing</h3>
+                <p class="service-price">ZMW 3,000 - 6,000</p>
+                <p class="service-time">15-25 Business Days</p>
+                <p class="service-description">Regional trademark protection through ARIPO covering multiple African countries.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-trademark-aripo">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+        </div>
+        <div class="order-form-container" id="form-trademark-pacra" style="display: none;">
+            <h4>PACRA Trademark Registration</h4>
+            <form class="order-form" data-service-type="PACRA Trademark Registration">
+                <div class="form-group">
+                    <label for="trademarkPacraName">Your Full Name:</label>
+                    <input type="text" id="trademarkPacraName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkPacraEmail">Your Email:</label>
+                    <input type="email" id="trademarkPacraEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkPacraPhone">Your Phone Number:</label>
+                    <input type="tel" id="trademarkPacraPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkPacraCompany">Company/Business Name:</label>
+                    <input type="text" id="trademarkPacraCompany" name="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkPacraMark">Trademark/Brand Name:</label>
+                    <input type="text" id="trademarkPacraMark" name="trademarkName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkPacraClass">Trademark Class:</label>
+                    <select id="trademarkPacraClass" name="trademarkClass" required>
+                        <option value="">Select Class</option>
+                        <option value="Class 1-5">Class 1-5 (Chemicals, Paints, etc.)</option>
+                        <option value="Class 6-10">Class 6-10 (Metal goods, Machinery, etc.)</option>
+                        <option value="Class 11-15">Class 11-15 (Appliances, Vehicles, etc.)</option>
+                        <option value="Class 16-20">Class 16-20 (Paper goods, Leather, etc.)</option>
+                        <option value="Class 21-25">Class 21-25 (Housewares, Textiles, etc.)</option>
+                        <option value="Class 26-30">Class 26-30 (Haberdashery, Foods, etc.)</option>
+                        <option value="Class 31-35">Class 31-35 (Agriculture, Advertising, etc.)</option>
+                        <option value="Class 36-40">Class 36-40 (Financial, Construction, etc.)</option>
+                        <option value="Class 41-45">Class 41-45 (Education, Technology, etc.)</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-trademark-aripo" style="display: none;">
+            <h4>ARIPO Trademark Filing</h4>
+            <form class="order-form" data-service-type="ARIPO Trademark Filing">
+                <div class="form-group">
+                    <label for="trademarkAripoName">Your Full Name:</label>
+                    <input type="text" id="trademarkAripoName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkAripoEmail">Your Email:</label>
+                    <input type="email" id="trademarkAripoEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkAripoPhone">Your Phone Number:</label>
+                    <input type="tel" id="trademarkAripoPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkAripoCompany">Company/Business Name:</label>
+                    <input type="text" id="trademarkAripoCompany" name="companyName" required>
+                </div>
+                <div class="form-group">
+                    <label for="trademarkAripoMark">Trademark/Brand Name:</label>      <input type="text" id="trademarkAripoMark" name="trademarkName" required>
+               </div>
+               <div class="form-group">
+                   <label for="trademarkAripoCountries">Countries for Protection:</label>
+                   <textarea id="trademarkAripoCountries" name="countries" rows="3" placeholder="List the ARIPO member countries where you want protection" required></textarea>
+               </div>
+               <button type="submit" class="submit-btn">Submit Application</button>
+           </form>
+       </div>
+   </div>
+</div>
 
+
+    <!-- Travel & Visa Booking Modal -->
+<div class="service-modal" id="travel-visa-booking-modal">
+   <div class="modal-content">
+       <span class="close-modal">&times;</span>
+       <div class="modal-header">
+           <h2>Travel & Visa Booking</h2>
+           <p>Flight bookings and visa application support with tour packages.</p>
+       </div>
+       <div class="service-pricing-grid">
+           <div class="service-item">
+               <h3>Flight Search & Booking</h3>
+               <p class="service-price">ZMW 200 - 800</p>
+               <p class="service-time">Same Day - 2 Days</p>
+               <p class="service-description">Professional flight search, comparison, and booking assistance.</p>
+               <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-travel-flight">
+                   <i class="fab fa-whatsapp"></i> Get Started
+               </button>
+           </div>
+           <div class="service-item">
+               <h3>Visa Application Support</h3>
+               <p class="service-price">ZMW 800 - 2,500</p>
+               <p class="service-time">5-15 Business Days</p>
+               <p class="service-description">Complete visa application assistance including document preparation and submission.</p>
+               <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-travel-visa">
+                   <i class="fab fa-whatsapp"></i> Get Started
+               </button>
+           </div>
+           <div class="service-item">
+               <h3>Tour Packages</h3>
+               <p class="service-price">Custom Quote</p>
+               <p class="service-time">3-10 Business Days</p>
+               <p class="service-description">Customized tour packages including accommodation, transport, and activities.</p>
+               <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-travel-tour">
+                   <i class="fab fa-whatsapp"></i> Get Started
+               </button>
+           </div>
+       </div>
+       <div class="order-form-container" id="form-travel-flight" style="display: none;">
+           <h4>Flight Search & Booking</h4>
+           <form class="order-form" data-service-type="Flight Search & Booking">
+               <div class="form-group">
+                   <label for="travelFlightName">Your Full Name:</label>
+                   <input type="text" id="travelFlightName" name="fullName" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightEmail">Your Email:</label>
+                   <input type="email" id="travelFlightEmail" name="email" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightPhone">Your Phone Number:</label>
+                   <input type="tel" id="travelFlightPhone" name="phoneNumber" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightFrom">Departure City:</label>
+                   <input type="text" id="travelFlightFrom" name="departureCity" placeholder="e.g., Lusaka" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightTo">Destination City:</label>
+                   <input type="text" id="travelFlightTo" name="destinationCity" placeholder="e.g., London" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightDate">Departure Date:</label>
+                   <input type="date" id="travelFlightDate" name="departureDate" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightReturn">Return Date (if applicable):</label>
+                   <input type="date" id="travelFlightReturn" name="returnDate">
+               </div>
+               <div class="form-group">
+                   <label for="travelFlightPassengers">Number of Passengers:</label>
+                   <select id="travelFlightPassengers" name="passengers" required>
+                       <option value="">Select</option>
+                       <option value="1">1 Passenger</option>
+                       <option value="2">2 Passengers</option>
+                       <option value="3">3 Passengers</option>
+                       <option value="4">4 Passengers</option>
+                       <option value="5+">5+ Passengers</option>
+                   </select>
+               </div>
+               <button type="submit" class="submit-btn">Submit Request</button>
+           </form>
+       </div>
+       <div class="order-form-container" id="form-travel-visa" style="display: none;">
+           <h4>Visa Application Support</h4>
+           <form class="order-form" data-service-type="Visa Application Support">
+               <div class="form-group">
+                   <label for="travelVisaName">Your Full Name:</label>
+                   <input type="text" id="travelVisaName" name="fullName" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaEmail">Your Email:</label>
+                   <input type="email" id="travelVisaEmail" name="email" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaPhone">Your Phone Number:</label>
+                   <input type="tel" id="travelVisaPhone" name="phoneNumber" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaCountry">Destination Country:</label>
+                   <input type="text" id="travelVisaCountry" name="destinationCountry" placeholder="e.g., United Kingdom" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaType">Visa Type:</label>
+                   <select id="travelVisaType" name="visaType" required>
+                       <option value="">Select Visa Type</option>
+                       <option value="Tourist">Tourist Visa</option>
+                       <option value="Business">Business Visa</option>
+                       <option value="Student">Student Visa</option>
+                       <option value="Work">Work Visa</option>
+                       <option value="Transit">Transit Visa</option>
+                       <option value="Other">Other</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaPurpose">Purpose of Travel:</label>
+                   <textarea id="travelVisaPurpose" name="purposeOfTravel" rows="3" required></textarea>
+               </div>
+               <div class="form-group">
+                   <label for="travelVisaDate">Intended Travel Date:</label>
+                   <input type="date" id="travelVisaDate" name="travelDate" required>
+               </div>
+               <button type="submit" class="submit-btn">Submit Application</button>
+           </form>
+       </div>
+       <div class="order-form-container" id="form-travel-tour" style="display: none;">
+           <h4>Tour Package Request</h4>
+           <form class="order-form" data-service-type="Tour Package Request">
+               <div class="form-group">
+                   <label for="travelTourName">Your Full Name:</label>
+                   <input type="text" id="travelTourName" name="fullName" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourEmail">Your Email:</label>
+                   <input type="email" id="travelTourEmail" name="email" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourPhone">Your Phone Number:</label>
+                   <input type="tel" id="travelTourPhone" name="phoneNumber" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourDestination">Preferred Destination(s):</label>
+                   <input type="text" id="travelTourDestination" name="destination" placeholder="e.g., Victoria Falls, Cape Town" required>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourDuration">Tour Duration:</label>
+                   <select id="travelTourDuration" name="duration" required>
+                       <option value="">Select Duration</option>
+                       <option value="1-3 days">1-3 Days</option>
+                       <option value="4-7 days">4-7 Days</option>
+                       <option value="1-2 weeks">1-2 Weeks</option>
+                       <option value="2+ weeks">2+ Weeks</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourGroup">Group Size:</label>
+                   <select id="travelTourGroup" name="groupSize" required>
+                       <option value="">Select Group Size</option>
+                       <option value="Solo">Solo Traveler</option>
+                       <option value="Couple">Couple (2 people)</option>
+                       <option value="Small Group">Small Group (3-6 people)</option>
+                       <option value="Large Group">Large Group (7+ people)</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourBudget">Budget Range (ZMW):</label>
+                   <select id="travelTourBudget" name="budget" required>
+                       <option value="">Select Budget</option>
+                       <option value="Under 5,000">Under ZMW 5,000</option>
+                       <option value="5,000-15,000">ZMW 5,000 - 15,000</option>
+                       <option value="15,000-30,000">ZMW 15,000 - 30,000</option>
+                       <option value="30,000+">ZMW 30,000+</option>
+                   </select>
+               </div>
+               <div class="form-group">
+                   <label for="travelTourRequirements">Special Requirements/Interests:</label>
+                   <textarea id="travelTourRequirements" name="requirements" rows="3" placeholder="Adventure activities, cultural experiences, accommodation preferences, etc."></textarea>
+               </div>
+               <button type="submit" class="submit-btn">Submit Request</button>
+           </form>
+       </div>
+   </div>
+</div>
+
+    <div class="service-modal" id="invoice-quotation-maker-modal">
+        <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Invoice & Quotation Maker</h2>
+            <p>Create professional invoices and quotations instantly with PDF generation.</p>
+        </div>
+        <div class="service-pricing-grid">
+            <div class="service-item">
+                <h3>Basic Package</h3>
+                <p class="service-price">ZMW 200 - 500</p>
+                <p class="service-time">Same Day</p>
+                <p class="service-description">Simple invoice/quotation templates with basic customization and PDF generation.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-invoice-basic">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>Professional Package</h3>
+                <p class="service-price">ZMW 800 - 1,500</p>
+                <p class="service-time">1-2 Business Days</p>
+                <p class="service-description">Custom branded templates, VAT support, automated calculations, and cloud storage.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-invoice-professional">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+        </div>
+        <div class="order-form-container" id="form-invoice-basic" style="display: none;">
+            <h4>Basic Invoice & Quotation Package</h4>
+            <form class="order-form" data-service-type="Basic Invoice & Quotation Package">
+                <div class="form-group">
+                    <label for="invoiceBasicName">Your Full Name:</label>
+                    <input type="text" id="invoiceBasicName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceBasicEmail">Your Email:</label>
+                    <input type="email" id="invoiceBasicEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceBasicPhone">Your Phone Number:</label>
+                    <input type="tel" id="invoiceBasicPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceBasicBusiness">Business Name:</label>
+                    <input type="text" id="invoiceBasicBusiness" name="businessName" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceBasicType">Service Type Needed:</label>
+                    <select id="invoiceBasicType" name="serviceType" required>
+                        <option value="">Select Service</option>
+                        <option value="Invoice Template">Invoice Template</option>
+                        <option value="Quotation Template">Quotation Template</option>
+                        <option value="Both">Both Invoice & Quotation</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-invoice-professional" style="display: none;">
+            <h4>Professional Invoice & Quotation Package</h4>
+            <form class="order-form" data-service-type="Professional Invoice & Quotation Package">
+                <div class="form-group">
+                    <label for="invoiceProfName">Your Full Name:</label>
+                    <input type="text" id="invoiceProfName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceProfEmail">Your Email:</label>
+                    <input type="email" id="invoiceProfEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceProfPhone">Your Phone Number:</label>
+                    <input type="tel" id="invoiceProfPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceProfBusiness">Business Name:</label>
+                    <input type="text" id="invoiceProfBusiness" name="businessName" required>
+                </div>
+                <div class="form-group">
+                    <label for="invoiceProfRequirements">Specific Requirements:</label>
+                    <textarea id="invoiceProfRequirements" name="requirements" rows="4" placeholder="Describe your branding needs, special features, etc."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+    
+    </div>
+    </div>
+    <div class="service-modal" id="driving-license-support-modal">
+        <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>Driving License Support</h2>
+            <p>Complete driving license application assistance including RTSA booking.</p>
+        </div>
+        <div class="service-pricing-grid">
+            <div class="service-item">
+                <h3>Provisional License</h3>
+                <p class="service-price">ZMW 400 - 600</p>
+                <p class="service-time">2-5 Business Days</p>
+                <p class="service-description">Assistance with provisional license application and documentation.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-license-provisional">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>RTSA Test Booking</h3>
+                <p class="service-price">ZMW 300 - 500</p>
+                <p class="service-time">1-3 Business Days</p>
+                <p class="service-description">RTSA driving test booking and preparation assistance.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-license-rtsa">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>License Renewal</h3>
+                <p class="service-price">ZMW 350 - 500</p>
+                <p class="service-time">2-4 Business Days</p>
+                <p class="service-description">Driving license renewal and courier delivery services.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-license-renewal">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+        </div>
+        <div class="order-form-container" id="form-license-provisional" style="display: none;">
+            <h4>Provisional License Application</h4>
+            <form class="order-form" data-service-type="Provisional License Application">
+                <div class="form-group">
+                    <label for="licenseProvName">Your Full Name:</label>
+                    <input type="text" id="licenseProvName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseProvEmail">Your Email:</label>
+                    <input type="email" id="licenseProvEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseProvPhone">Your Phone Number:</label>
+                    <input type="tel" id="licenseProvPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseProvNRC">NRC Number:</label>
+                    <input type="text" id="licenseProvNRC" name="nrcNumber" placeholder="123456/78/9" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseProvClass">License Class:</label>
+                    <select id="licenseProvClass" name="licenseClass" required>
+                        <option value="">Select License Class</option>
+                        <option value="Class A">Class A (Light Motor Vehicle)</option>
+                        <option value="Class B">Class B (Heavy Motor Vehicle)</option>
+                        <option value="Class C">Class C (Motor Cycle)</option>
+                        <option value="Class D">Class D (Public Service Vehicle)</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-license-rtsa" style="display: none;">
+            <h4>RTSA Test Booking</h4>
+            <form class="order-form" data-service-type="RTSA Test Booking">
+                <div class="form-group">
+                    <label for="licenseRtsaName">Your Full Name:</label>
+                    <input type="text" id="licenseRtsaName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRtsaEmail">Your Email:</label>
+                    <input type="email" id="licenseRtsaEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRtsaPhone">Your Phone Number:</label>
+                    <input type="tel" id="licenseRtsaPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRtsaProvisional">Provisional License Number:</label>
+                    <input type="text" id="licenseRtsaProvisional" name="provisionalNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRtsaLocation">Preferred Test Location:</label>
+                    <select id="licenseRtsaLocation" name="testLocation" required>
+                        <option value="">Select Location</option>
+                        <option value="Lusaka">Lusaka</option>
+                        <option value="Kitwe">Kitwe</option>
+                        <option value="Ndola">Ndola</option>
+                        <option value="Livingstone">Livingstone</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Booking</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-license-renewal" style="display: none;">
+            <h4>License Renewal Application</h4>
+            <form class="order-form" data-service-type="License Renewal">
+                <div class="form-group">
+                    <label for="licenseRenewalName">Your Full Name:</label>
+                    <input type="text" id="licenseRenewalName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRenewalEmail">Your Email:</label>
+                    <input type="email" id="licenseRenewalEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRenewalPhone">Your Phone Number:</label>
+                    <input type="tel" id="licenseRenewalPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRenewalCurrent">Current License Number:</label>
+                    <input type="text" id="licenseRenewalCurrent" name="currentLicenseNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="licenseRenewalExpiry">License Expiry Date:</label>
+                    <input type="date" id="licenseRenewalExpiry" name="expiryDate" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Renewal</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+    </div>
+
+    <div class="service-modal" id="zamserve-customs-assist-modal">
+        <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>ZamServe Customs Assist</h2>
+            <p>Vehicle and container clearing & forwarding services with real-time tracking.</p>
+        </div>
+        <div class="service-pricing-grid">
+            <div class="service-item">
+                <h3>Vehicle Clearance</h3>
+                <p class="service-price">ZMW 2,000 - 5,000</p>
+                <p class="service-time">3-7 Business Days</p>
+                <p class="service-description">Complete vehicle import clearance including duty calculation and documentation.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-customs-vehicle">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>Container Cargo</h3>
+                <p class="service-price">ZMW 1,500 - 8,000</p>
+                <p class="service-time">5-10 Business Days</p>
+                <p class="service-description">Container clearing, cargo handling, and forwarding services with tracking.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-customs-container">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+        </div>
+        <div class="order-form-container" id="form-customs-vehicle" style="display: none;">
+            <h4>Vehicle Clearance Service</h4>
+            <form class="order-form" data-service-type="Vehicle Clearance">
+                <div class="form-group">
+                    <label for="customsVehicleName">Your Full Name:</label>
+                    <input type="text" id="customsVehicleName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsVehicleEmail">Your Email:</label>
+                    <input type="email" id="customsVehicleEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsVehiclePhone">Your Phone Number:</label>
+                    <input type="tel" id="customsVehiclePhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsVehicleType">Vehicle Type:</label>
+                    <select id="customsVehicleType" name="vehicleType" required>
+                        <option value="">Select Vehicle Type</option>
+                        <option value="Car">Car</option>
+                        <option value="Truck">Truck</option>
+                        <option value="Bus">Bus</option>
+                        <option value="Motorcycle">Motorcycle</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customsVehicleOrigin">Country of Origin:</label>
+                    <input type="text" id="customsVehicleOrigin" name="countryOrigin" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsVehicleDetails">Vehicle Details (Make, Model, Year):</label>
+                    <textarea id="customsVehicleDetails" name="vehicleDetails" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-customs-container" style="display: none;">
+            <h4>Container Cargo Service</h4>
+            <form class="order-form" data-service-type="Container Cargo">
+                <div class="form-group">
+                    <label for="customsContainerName">Your Full Name:</label>
+                    <input type="text" id="customsContainerName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsContainerEmail">Your Email:</label>
+                    <input type="email" id="customsContainerEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsContainerPhone">Your Phone Number:</label>
+                    <input type="tel" id="customsContainerPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsContainerSize">Container Size:</label>
+                    <select id="customsContainerSize" name="containerSize" required>
+                        <option value="">Select Container Size</option>
+                        <option value="20ft">20ft Container</option>
+                        <option value="40ft">40ft Container</option>
+                        <option value="40ft HC">40ft High Cube</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="customsContainerOrigin">Port of Origin:</label>
+                    <input type="text" id="customsContainerOrigin" name="portOrigin" required>
+                </div>
+                <div class="form-group">
+                    <label for="customsContainerCargo">Cargo Description:</label>
+                    <textarea id="customsContainerCargo" name="cargoDescription" rows="3" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Submit Request</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
+
+    <div class="service-modal" id="e-passport-assist-modal">
+        <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div class="modal-header">
+            <h2>e-Passport Assist</h2>
+            <p>Complete passport processing support for Zambian citizens.</p>
+        </div>
+        <div class="service-pricing-grid">
+            <div class="service-item">
+                <h3>New Passport Application</h3>
+                <p class="service-price">ZMW 800 - 1,200</p>
+                <p class="service-time">5-10 Business Days</p>
+                <p class="service-description">Complete assistance with new passport applications including document preparation.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-new">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>Passport Renewal</h3>
+                <p class="service-price">ZMW 600 - 900</p>
+                <p class="service-time">3-7 Business Days</p>
+                <p class="service-description">Fast and efficient passport renewal services for expired or expiring passports.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-renewal">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+            <div class="service-item">
+                <h3>Child Passport Services</h3>
+                <p class="service-price">ZMW 700 - 1,000</p>
+                <p class="service-time">5-10 Business Days</p>
+                <p class="service-description">Specialized assistance for child passport applications and renewals.</p>
+                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-child">
+                    <i class="fab fa-whatsapp"></i> Get Started
+                </button>
+            </div>
+        </div>
+        <div class="order-form-container" id="form-passport-new" style="display: none;">
+            <h4>New Passport Application</h4>
+            <form class="order-form" data-service-type="New Passport Application">
+                <div class="form-group">
+                    <label for="passportNewName">Your Full Name:</label>
+                    <input type="text" id="passportNewName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportNewEmail">Your Email:</label>
+                    <input type="email" id="passportNewEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportNewPhone">Your Phone Number:</label>
+                    <input type="tel" id="passportNewPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportNewNRC">NRC Number:</label>
+                    <input type="text" id="passportNewNRC" name="nrcNumber" placeholder="123456/78/9" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportNewReason">Reason for Passport:</label>
+                    <select id="passportNewReason" name="reason" required>
+                        <option value="">Select Reason</option>
+                        <option value="Business Travel">Business Travel</option>
+                        <option value="Tourism">Tourism</option>
+                        <option value="Education">Education</option>
+                        <option value="Medical">Medical</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-passport-renewal" style="display: none;">
+            <h4>Passport Renewal Application</h4>
+            <form class="order-form" data-service-type="Passport Renewal">
+                <div class="form-group">
+                    <label for="passportRenewalName">Your Full Name:</label>
+                    <input type="text" id="passportRenewalName" name="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportRenewalEmail">Your Email:</label>
+                    <input type="email" id="passportRenewalEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportRenewalPhone">Your Phone Number:</label>
+                    <input type="tel" id="passportRenewalPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportRenewalOld">Current Passport Number:</label>
+                    <input type="text" id="passportRenewalOld" name="currentPassportNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportRenewalExpiry">Current Passport Expiry Date:</label>
+                    <input type="date" id="passportRenewalExpiry" name="expiryDate" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Renewal</button>
+            </form>
+        </div>
+        <div class="order-form-container" id="form-passport-child" style="display: none;">
+            <h4>Child Passport Application</h4>
+            <form class="order-form" data-service-type="Child Passport Application">
+                <div class="form-group">
+                    <label for="passportChildParentName">Parent/Guardian Name:</label>
+                    <input type="text" id="passportChildParentName" name="parentName" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportChildEmail">Your Email:</label>
+                    <input type="email" id="passportChildEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportChildPhone">Your Phone Number:</label>
+                    <input type="tel" id="passportChildPhone" name="phoneNumber" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportChildName">Child's Full Name:</label>
+                    <input type="text" id="passportChildName" name="childName" required>
+                </div>
+                <div class="form-group">
+                    <label for="passportChildDOB">Child's Date of Birth:</label>
+                    <input type="date" id="passportChildDOB" name="childDOB" required>
+                </div>
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    </div>
     <!-- New E-Ticketing Modal -->
     <div class="service-modal" id="e-ticketing-modal">
         <div class="modal-content">
@@ -2120,9 +3160,9 @@
                 </div>
             </div>
             <div class="service-gallery">
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+1" alt="Logo Design Example 1"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+2" alt="Logo Design Example 2"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+3" alt="Logo Design Example 3"></div>
+                <div class="gallery-item"><img src="/PROFESSIONAL COMPANY LOGOs/professional logos1.jpg" alt="Logo Design Example 1"></div>
+                <div class="gallery-item"><img src="/PROFESSIONAL COMPANY LOGOs/professional logos2.jpg" alt="Logo Design Example 2"></div>
+                <div class="gallery-item"><img src="/PROFESSIONAL COMPANY LOGOs/professional logos3.jpg" alt="Logo Design Example 3"></div>
             </div>
             <div class="order-form-container" id="form-logo-basic" style="display: none;">
                 <h4>Place Your Basic Logo Design Order</h4>
@@ -2832,9 +3872,9 @@
                 </div>
             </div>
             <div class="service-gallery">
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+1" alt="Logo Design Example 1"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+2" alt="Logo Design Example 2"></div>
-                <div class="gallery-item"><img src="https://via.placeholder.com/300x200/cccccc/white?text=Logo+Design+3" alt="Logo Design Example 3"></div>
+                <div class="gallery-item"><img src="/BUSINESS CARDS/BUSINESS CARDS7.jpg" alt="business-card Example 1"></div>
+                <div class="gallery-item"><img src="/BUSINESS CARDS/BUSINESS CARDS6.jpg" alt="business-card Example 2"></div>
+                <div class="gallery-item"><img src="/BUSINESS CARDS/BUSINESS CARDS4.jpg" alt="business-card Example 3"></div>
             </div>
             <div class="order-form-container" id="form-bc-standard" style="display: none;">
                 <h4>Place Your Standard Business Card Design Order</h4>
@@ -2973,6 +4013,8 @@
             </div>
         </div>
     </div>
+    
+    
 
     <div class="service-modal" id="website-design-modal">
         <div class="modal-content">
@@ -4206,6 +5248,54 @@
 
 
     <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    // Modal functionality
+    const openModalButtons = document.querySelectorAll('[data-modal-target]');
+    const closeModalButtons = document.querySelectorAll('.close-modal');
+    const modals = document.querySelectorAll('.service-modal');
+    
+    openModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modalId = button.getAttribute('data-modal-target');
+            const modal = document.getElementById(modalId);
+            modal.classList.add('active');
+        });
+    });
+    
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const modal = button.closest('.service-modal');
+            modal.classList.remove('active');
+        });
+    });
+    
+    modals.forEach(modal => {
+        modal.addEventListener('click', e => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+            }
+        });
+    });
+    
+    // Form toggling
+    const openFormButtons = document.querySelectorAll('.open-specific-form-btn');
+    openFormButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const formId = button.getAttribute('data-form-target');
+            const formContainer = document.getElementById(formId);
+            
+            // Hide all forms in this modal
+            const modalContent = button.closest('.modal-content');
+            modalContent.querySelectorAll('.order-form-container').forEach(form => {
+                form.style.display = 'none';
+            });
+            
+            // Show selected form
+            formContainer.style.display = 'block';
+        });
+    });
+});
         document.addEventListener('DOMContentLoaded', () => {
             // Loader functionality
             const loader = document.getElementById('loader');
