@@ -105,7 +105,7 @@
             width: 100%;
             background: rgba(10, 37, 64, 0.95);
             backdrop-filter: blur(10px);
-            z-index: 1000;
+            z-index: 9998 !important;
             transition: var(--transition);
             box-shadow: var(--shadow-sm);
             padding: 1rem 0;
@@ -649,7 +649,6 @@
             margin-bottom: 0.8rem;
             color: var(--navy);
         }
-
         .service-card p {
             font-size: 0.95rem;
             color: var(--medium-gray);
@@ -1221,6 +1220,7 @@
 
         /* WhatsApp Integration */
         .whatsapp-float {
+            z-index: 9999 !important;
             position: fixed;
             width: 70px;
             height: 70px;
@@ -1292,7 +1292,6 @@
             font-weight: 500;
             color: var(--dark-gray);
         }
-
         .order-form-container .form-group input, .order-form-container .form-group textarea, .order-form-container .form-group select {
             width: 100%;
             padding: 0.75rem 1rem;
@@ -1628,9 +1627,289 @@
                 right: 20px;
             }
         }
+    
+
+/* Templates list buttons */
+.template-list { display:flex; flex-wrap:wrap; gap:.5rem; margin: .5rem 0 1rem; }
+.template-list .download-template {
+    border:1px solid rgba(0,0,0,.08);
+    background: var(--light);
+    padding:.6rem .9rem; border-radius: 10px; cursor:pointer;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.template-list .download-template:hover { background: #fff; transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+
+/* Compliance mini-cards */
+.compliance-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; }
+.compliance-card {
+    border:1px solid rgba(0,0,0,.06);
+    border-radius: 12px; padding: 1rem;
+    background: #fff;
+    display:flex; flex-direction:column; gap:.5rem;
+}
+.btn.small { font-size:.85rem; padding:.5rem .75rem; border-radius: 8px; }
+
+
+/* --- Team Section --- */
+/* --- Team Section --- */
+.team {
+    padding: 4rem 0;
+    background: var(--light);
+}
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Creates two equal columns */
+    gap: 2rem;
+    max-width: 1000px; /* Controls the max width of the section */
+    margin: 0 auto; /* Centers the grid */
+}
+.team-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+}
+.team-photo img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    border: 5px solid var(--white);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.team h3 {
+    margin-bottom: 0.25rem;
+}
+.team .role {
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+.team .bio {
+    color: var(--medium-gray); /* Corrected from --muted to a defined color */
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+.team-socials {
+    display:flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+.team-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    transition: background .2s ease, transform .2s ease, color .2s ease;
+    color: var(--navy);
+    font-size: 1rem;
+}
+.team-socials a:hover {
+    background: var(--gold);
+    color: var(--white);
+    transform: translateY(-2px);
+}
+
+/* Makes the team section a single column on smaller screens */
+@media (max-width: 768px) {
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- Feature Card polish (medal icon etc.) --- */
+.feature-card { transition: transform .25s ease, box-shadow .25s ease; }
+.feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.feature-card .feature-icon { transition: transform .25s ease, filter .25s ease; }
+.feature-card:hover .feature-icon { transform: scale(1.07); filter: drop-shadow(0 6px 12px rgba(212,175,55,.35)); }
+
+/* --- Mobile fixes to avoid horizontal scroll --- */
+html, body, .container, .page-content { max-width: 100vw; overflow-x: hidden; }
+img, video, svg, canvas { max-width: 100%; height: auto; }
+.services-grid { grid-auto-rows: 1fr; }
+@media (max-width: 768px) {
+    .team-grid { grid-template-columns: 1fr; }
+}
+
+
+.form-row { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: .75rem; }
+@media (max-width: 768px) { .form-row { grid-template-columns: 1fr; } }
+
+
+/* --- Modal stacking fixes (overlay always on top) --- */
+.service-modal { z-index: 10000 !important; }
+.service-modal .modal-content { z-index: 10001 !important; position: relative; }
+main, footer { z-index: auto; }
+
+/* Styled checkbox grid for Branding modal */
+.check-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: .75rem;
+}
+.check-card {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+  padding: .85rem 1rem;
+  background: var(--off-white);
+  border: 1px solid var(--light-gray);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.check-card input { accent-color: var(--gold); width: 18px; height: 18px; }
+.check-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); background: #fff; }
+
+/* Compliance dashboard statuses */
+.compliance-grid.checks-only label.compliance-card { cursor: pointer; }
+.compliance-card .row { display: grid; grid-template-columns: 24px 1fr; gap: .75rem; align-items: center; }
+.status-pill {
+  display: inline-flex; align-items: center; gap: .45rem;
+  padding: .25rem .6rem; border-radius: 999px; font-size: .8rem; font-weight: 600;
+}
+.status-pill .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.status-pill.due { background: #fff7e6; color: #a76a00; border:1px solid #ffe1a3; }
+.status-pill.due .dot { background:#ffb44d; }
+.status-pill.filed { background: #e9f8ee; color: #216e3a; border:1px solid #b9e5c7; }
+.status-pill.filed .dot { background:#34c759; }
+.status-pill.overdue { background:#fde8e8; color:#9b1c1c; border:1px solid #f7b3b3; }
+.status-pill.overdue .dot { background:#ff4545; }
+
+
+/* Interest flow for Web/App modals */
+.service-item .interest-btn{ margin-top:.5rem; }
+.order-form-container.interest-form{ display:none; }
+
+/* Two-step inquiry forms (hidden until a package is selected) */
+.order-form-container.interest-form{ display:none; }
+.service-item .interest-btn{ margin-top:.5rem; }
+
+</style>
+    <style>
+      html, body { overflow: hidden !important; }
+      .shutdown-overlay {
+        position: fixed; inset: 0; z-index: 2147483647;
+        display: grid; place-items: center;
+        background: rgba(17, 24, 39, 0.28);
+        -webkit-backdrop-filter: blur(6px) saturate(110%);
+        backdrop-filter: blur(6px) saturate(110%);
+        color: #0f172a;
+        animation: fadeIn 0.4s ease-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      @keyframes slideUp {
+        from { transform: translateY(30px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+      .shutdown-card {
+        width: min(92vw, 640px);
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(250,250,250,0.96)) padding-box,
+                    linear-gradient(135deg, var(--gold), var(--gold-dark)) border-box;
+        border-radius: 16px;
+        padding: 32px 28px; 
+        box-shadow: 0 22px 60px rgba(0,0,0,0.32), 0 0 0 1px rgba(255,255,255,0.5) inset;
+        text-align: center; border: 2px solid transparent;
+        max-height: 90vh; overflow-y: auto;
+        position: relative;
+        animation: slideUp 0.5s ease-out;
+      }
+      .shutdown-card::before {
+        content: "";
+        position: absolute;
+        top: -50px; right: -50px; width: 160px; height: 160px;
+        background: radial-gradient(closest-side, rgba(212,175,55,0.22), rgba(212,175,55,0));
+        filter: blur(14px);
+        pointer-events: none;
+        animation: pulse 3s ease-in-out infinite;
+      }
+      .shutdown-logo { 
+        width: 130px; height: auto; margin-bottom: 14px; 
+        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+      }
+      .shutdown-card h2 { 
+        margin: 8px 0 10px; font-size: 1.6rem; line-height: 1.25; 
+        color: #0f172a; font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+      .shutdown-card p { 
+        margin: 0 0 20px; color: #374151; font-size: 1.05rem; line-height: 1.6;
+      }
+      .shutdown-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .shutdown-card .btn { 
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 12px 20px; border-radius: 10px; font-weight: 600; 
+        text-decoration: none; box-shadow: 0 6px 18px rgba(0,0,0,0.14);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        font-size: 0.95rem;
+      }
+      .shutdown-card .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+      }
+      .shutdown-card .btn-wa { background: #25D366; color: #ffffff; }
+      .shutdown-card .btn-fb { background: #1877F2; color: #ffffff; }
+      .shutdown-badge {
+        display: inline-flex; align-items: center; justify-content: center; gap: .4rem;
+        background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(184,134,11,0.12));
+        color: #7a5b00;
+        border: 1px solid rgba(212,175,55,0.4);
+        padding: .4rem .75rem; border-radius: 999px; font-weight: 600; font-size: .85rem;
+        margin: 0 auto .75rem auto;
+        box-shadow: 0 2px 8px rgba(212,175,55,0.15);
+      }
+      .shutdown-badge::before {
+        content: "⚠";
+        font-size: 1rem;
+        line-height: 1;
+      }
+      .shutdown-divider {
+        height: 1px; width: 100%; 
+        background: linear-gradient(90deg, transparent, rgba(212,175,55,0.3), transparent);
+        margin: 14px 0 16px;
+      }
+      @media (max-width: 480px) {
+        .shutdown-actions .btn { width: 100%; text-align: center; }
+        .shutdown-card { padding: 24px 20px; }
+      }
     </style>
 </head>
 <body>
+    <!-- Permanent shutdown overlay -->
+    <div class="shutdown-overlay" role="dialog" aria-modal="true" aria-label="Site temporarily unavailable">
+        <div class="shutdown-card">
+            <img class="shutdown-logo" src="Byte%26Berry.png" alt="Byte&Berry logo" />
+            <h2>Golden Success has been temporarily shut down</h2>
+            <div class="shutdown-divider"></div>
+            <p>
+                Please contact WhatsApp number <strong>+260760580949</strong> if you'd like your own
+                website or app developed, or visit our Facebook page.
+            </p>
+            <div class="shutdown-actions">
+                <a class="btn btn-wa" href="https://wa.me/260760580949" target="_blank" rel="noopener">Chat on WhatsApp</a>
+                <a class="btn btn-fb" href="https://web.facebook.com/p/ByteBerry-61575125536198/?_rdc=1&_rdr#" target="_blank" rel="noopener">Visit Facebook</a>
+            </div>
+        </div>
+    </div>
     <div class="loader" id="loader">
         <div class="loader-content">
             <div class="loader-logo animate-float">GS</div>
@@ -1675,28 +1954,227 @@
             </div>
 
             <div class="service-filters">
-                <button class="filter-btn active" data-filter="all">All Services</button>
-                <button class="filter-btn" data-filter="business-registration">Business Registration</button>
-                <button class="filter-btn" data-filter="immigration">Immigration</button>
-                <button class="filter-btn" data-filter="design-branding">Design & Branding</button>
-                <button class="filter-btn" data-filter="printing">Printing Services</button>
-                <button class="filter-btn" data-filter="writing">Academic & Business Writing</button>
-                <button class="filter-btn" data-filter="office-supplies">Office Supplies</button>
-                <button class="filter-btn" data-filter="construction">Construction</button>
-                <button class="filter-btn" data-filter="supply">Supply</button>
-                <button class="filter-btn" data-filter="e-ticketing">E-Ticketing</button> 
-                <button class="filter-btn" data-filter="immigration">E-Passport Assist</button>
-                <button class="filter-btn" data-filter="business-registration">ZamServe Customs Assist</button>
-                <button class="filter-btn" data-filter="business-registration">Invoice & Quotation Maker</button>
-                <button class="filter-btn" data-filter="immigration">Driving License Support</button>
-                <button class="filter-btn" data-filter="business-registration">Trademark & IP Registration</button>
-                <button class="filter-btn" data-filter="immigration">Travel & Visa Booking</button><!-- New Filter Button -->
-            </div>
+  <button class="filter-btn active" data-filter="all">All</button>
+  <button class="filter-btn" data-filter="academic-writing">Academic Writing</button>
+  <button class="filter-btn" data-filter="business-writing">Business Writing</button>
+  <button class="filter-btn" data-filter="compliance">Compliance</button>
+  <button class="filter-btn" data-filter="invoice-makers">Invoice Makers</button>
+  <button class="filter-btn" data-filter="house-plans">House Plans & Architectural</button>
+  <button class="filter-btn" data-filter="land-support">Land Support Assist</button>
+  <button class="filter-btn" data-filter="legal-assistance">Legal Assistance</button>
+  <button class="filter-btn" data-filter="immigration">Immigration (Permits)</button>
+  <button class="filter-btn" data-filter="zra-customs">ZRA Customs Assist</button>
+  <button class="filter-btn" data-filter="driving-license">Driving License Support</button>
+  <button class="filter-btn" data-filter="e-passport">E‑Passport Assist</button>
+  <button class="filter-btn" data-filter="travel-visa">Travel & Visa Booking</button>
+  <button class="filter-btn" data-filter="editorial">Editorial</button>
+</div>
 
             <div class="services-grid">
+<!-- New: Web & App Development -->
+<div class="service-card" data-service="web-development" data-category="editorial">
+    <div class="service-icon"><i class="fas fa-code"></i></div>
+    <h3>Web Development</h3>
+    <p>Modern, responsive websites with SEO, analytics, and support.</p>
+    <a href="#" class="order-btn" data-modal-target="web-development-modal">View Packages</a>
+</div>
+<div class="service-card" data-service="app-development" data-category="editorial">
+    <div class="service-icon"><i class="fas fa-mobile-screen"></i></div>
+    <h3>App Development</h3>
+    <p>iOS/Android apps with secure backends and scalable architecture.</p>
+    <a href="#" class="order-btn" data-modal-target="app-development-modal">View Packages</a>
+</div>
+
+<div class="service-card" data-service="tax-clearance" data-category="compliance">
+        <div class="service-icon"><i class="fas fa-certificate"></i></div>
+        <h3>Tax Clearance</h3>
+        <p>Get your ZRA tax clearance fast for tenders and banking.</p>
+        <a href="#" class="order-btn" data-modal-target="tax-clearance-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="ncc" data-category="compliance">
+        <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+        <h3>NCC</h3>
+        <p>Support with NCC registration and renewals for contractors.</p>
+        <a href="#" class="order-btn" data-modal-target="ncc-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="house-plans-architectural" data-category="house-plans">
+        <div class="service-icon"><i class="fas fa-drafting-compass"></i></div>
+        <h3>House Plans & Architectural</h3>
+        <p>Complete architectural drawings and finishing schedules.</p>
+        <a href="#" class="order-btn" data-modal-target="house-plans-architectural-modal">Get Quote</a>
+    </div>
+<div class="service-card" data-service="legal-assistance" data-category="legal-assistance">
+        <div class="service-icon"><i class="fas fa-scale-balanced"></i></div>
+        <h3>Legal Assistance</h3>
+        <p>NDAs, Contracts, MOUs, Affidavits, Notary & Shareholders Agreements.</p>
+        <a href="#" class="order-btn" data-modal-target="legal-assistance-modal">Request</a>
+    </div>
+<div class="service-card" data-service="investor-permit" data-category="immigration">
+        <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+        <h3>Investors Permit</h3>
+        <p>Professional assistance preparing and submitting investor permits.</p>
+        <a href="#" class="order-btn" data-modal-target="investor-permit-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="study-permit" data-category="immigration">
+        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+        <h3>Study Permit</h3>
+        <p>Study permit application support for schools and colleges.</p>
+        <a href="#" class="order-btn" data-modal-target="study-permit-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="research-proposal" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Research Proposal</h3>
+        <p>Professional research proposal support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="research-proposal-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="essays" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Essays</h3>
+        <p>Professional essays support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="essays-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="school-assignments" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>School Assignments</h3>
+        <p>Professional school assignments support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="school-assignments-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="literature-review" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Literature Review</h3>
+        <p>Professional literature review support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="literature-review-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="dissertation-writing" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Dissertation Writing</h3>
+        <p>Professional dissertation writing support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="dissertation-writing-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="thesis-writing" data-category="academic-writing">
+        <div class="service-icon"><i class="fas fa-book-open"></i></div>
+        <h3>Thesis Writing</h3>
+        <p>Professional thesis writing support with proper citations.</p>
+        <a href="#" class="order-btn" data-modal-target="thesis-writing-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="grant-proposal" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Grant Proposal</h3>
+        <p>Concise, impactful grant proposal for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="grant-proposal-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="cv-cover-letter" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>CV & Cover Letter Writing</h3>
+        <p>Concise, impactful cv & cover letter writing for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="cv-cover-letter-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="concept-notes" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Concept Notes</h3>
+        <p>Concise, impactful concept notes for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="concept-notes-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="pitch-deck" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Pitch Deck</h3>
+        <p>Concise, impactful pitch deck for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="pitch-deck-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="proposal-reviews" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Proposal Reviews</h3>
+        <p>Concise, impactful proposal reviews for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="proposal-reviews-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="editing" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Editing</h3>
+        <p>Concise, impactful editing for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="editing-modal">Order Now</a>
+    </div>
+<div class="service-card" data-service="proofreading" data-category="business-writing">
+        <div class="service-icon"><i class="fas fa-pen-nib"></i></div>
+        <h3>Proofreading</h3>
+        <p>Concise, impactful proofreading for professional results.</p>
+        <a href="#" class="order-btn" data-modal-target="proofreading-modal">Order Now</a>
+    </div>
+
+<!-- New: Language Translation Assist (Academic) -->
+    <div class="service-card featured" data-service="language-translation" data-category="editorial">
+        <div class="service-icon"><i class="fas fa-language"></i></div>
+        <h3>Language Translation Assist</h3>
+        <p>Fast, accurate translation and proofreading for academic, business, and immigration documents.</p>
+        <a href="#" class="order-btn" data-modal-target="language-translation-modal">Get Started <i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <!-- New: Legal Document Assist (Business) -->
+    <div class="service-card" data-service="legal-document-assist" data-category="business">
+        <div class="service-icon"><i class="fas fa-scale-balanced"></i></div>
+        <h3>Legal Document Assist</h3>
+        <p>Contracts, affidavits, board resolutions & more — with downloadable starter templates.</p>
+        <a href="#" class="order-btn" data-modal-target="legal-document-assist-modal">Open Templates</a>
+    </div>
+
+    <!-- New: Bank Assist Services (Business) -->
+    <div class="service-card" data-service="bank-assist" data-category="business">
+        <div class="service-icon"><i class="fas fa-building-columns"></i></div>
+        <h3>Bank Assist Services</h3>
+        <p>Account openings, KYC packs, bank reference letters, company profiles and compliance bundles.</p>
+        <a href="#" class="order-btn" data-modal-target="bank-assist-modal">Request Pack</a>
+    </div>
+
+    <!-- New: Tender Bidding Services (Business) -->
+    <div class="service-card" data-service="tender-bidding" data-category="business">
+        <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+        <h3>Tender Bidding Services</h3>
+        <p>End‑to‑end bid support: registration, document prep, technical & financial proposals, submission tracking.</p>
+        <a href="#" class="order-btn" data-modal-target="tender-bidding-modal">Bid With Us</a>
+    </div>
+
+    <!-- New: Land Support Assist (Business) -->
+    <div class="service-card" data-service="land-support" data-category="land-support">
+        <div class="service-icon"><i class="fas fa-map-location-dot"></i></div>
+        <h3>Land Support Assist</h3>
+        <p>Title search, land records, deeds processing, survey liaison and change‑of‑name services.</p>
+        <a href="#" class="order-btn" data-modal-target="land-support-modal">Start Request</a>
+    </div>
+
+    <!-- New: E‑Compliance Services Dashboard (Business) -->
+    <div class="service-card" data-service="e-compliance" data-category="compliance">
+        <div class="service-icon"><i class="fas fa-shield-check"></i></div>
+        <h3>E‑Compliance Services</h3>
+        <p>Annual returns, ZRA, NAPSA, NHIMA, PACRA watchlist — track deadlines and request filings.</p>
+        <a href="#" class="order-btn" data-modal-target="e-compliance-modal">Open Dashboard</a>
+    </div>
+
+    <!-- New: Corporate Branding & Print Suite (Editorial) -->
+    <div class="service-card" data-service="branding-print" data-category="editorial">
+        <div class="service-icon"><i class="fas fa-palette"></i></div>
+        <h3>Corporate Branding & Print Suite</h3>
+        <p>Logos, stationery, banners, stamps, email signatures — everything your brand needs.</p>
+        <a href="#" class="order-btn" data-modal-target="branding-print-modal">Design My Pack</a>
+    </div>
+
+    <!-- New: Product Sticker & Label Design (Editorial) -->
+    <div class="service-card" data-service="stickers-labels" data-category="editorial">
+        <div class="service-icon"><i class="fas fa-tags"></i></div>
+        <h3>Product Stickers & Labels</h3>
+        <p>Regulatory‑ready labels with barcodes, batch spaces, and print‑ready exports.</p>
+        <a href="#" class="order-btn" data-modal-target="stickers-labels-modal">Get Designs</a>
+    </div>
+
+    <!-- New: Travel & Visa Application (Business) -->
+    <div class="service-card" data-service="travel-visa" data-category="travel-visa">
+        <div class="service-icon"><i class="fas fa-plane-departure"></i></div>
+        <h3>Travel & Visa Applications</h3>
+        <p>Flight bookings, visa forms & checklists, embassy appointments, tours — handled end‑to‑end.</p>
+        <a href="#" class="order-btn" data-modal-target="travel-visa-modal">Plan My Trip</a>
+    </div>
+
                 <!-- e-Passport Assist -->
 
-                <div class="service-card featured" data-service="e-passport-assist" data-category="immigration">
+                <div class="service-card featured" data-service="e-passport-assist" data-category="e-passport">
                     <div class="service-icon"><i class="fas fa-passport"></i></div>
                     <h3>e-Passport Assist</h3>
                     <p>Complete passport processing support for Zambian citizens. New applications, renewals, and replacements.</p>
@@ -1704,37 +2182,37 @@
                 </div>
 
                 <!-- ZamServe Customs Assist -->
-                <div class="service-card" data-service="zamserve-customs-assist" data-category="business-registration">
+                <div class="service-card" data-service="zamserve-customs-assist" data-category="zra-customs">
                     <div class="service-icon"><i class="fas fa-shipping-fast"></i></div>
-                    <h3>ZamServe Customs Assist</h3>
-                    <p>Vehicle and container clearing & forwarding services with real-time tracking and duty estimates.</p>
+                    <h3>ZRA Customs Assist</h3>
+                    <p>Clearance and forwarding support for vehicles and goods.</p>
                     <a href="#" class="order-btn" data-modal-target="zamserve-customs-assist-modal">Get Started <i class="fab fa-whatsapp"></i></a>
                 </div>
 
                 <!-- Invoice & Quotation Maker -->
-                <div class="service-card" data-service="invoice-quotation-maker" data-category="business-registration">
+                <div class="service-card" data-service="invoice-quotation-maker" data-category="invoice-makers">
                     <div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div>
                     <h3>Invoice & Quotation Maker</h3>
-                    <p>Create professional invoices and quotations instantly with PDF generation and VAT support.</p>
+                    <p>Create simple, professional invoices and quotations for your business — fast.</p>
                     <a href="#" class="order-btn" data-modal-target="invoice-quotation-maker-modal">Get Started <i class="fab fa-whatsapp"></i></a>
                 </div>
                 <!-- Driving License Support -->
 
-                <div class="service-card" data-service="driving-license-support" data-category="immigration">
+                <div class="service-card" data-service="driving-license-support" data-category="driving-license">
                     <div class="service-icon"><i class="fas fa-id-card"></i></div>
                     <h3>Driving License Support</h3>
                     <p>Complete driving license application assistance including RTSA booking and courier services.</p>
                     <a href="#" class="order-btn" data-modal-target="driving-license-support-modal">Get Started <i class="fab fa-whatsapp"></i></a>
                 </div>
                 <!-- Trademark & IP Registration -->
-                <div class="service-card featured" data-service="trademark-ip-registration" data-category="business-registration">
+                <div class="service-card featured" data-service="trademark-ip-registration" data-category="e-passport">
                     <div class="service-icon"><i class="fas fa-copyright"></i></div>
                     <h3>Trademark & IP Registration</h3>
                     <p>Protect your intellectual property with PACRA/ARIPO registration and legal template support.</p>
                     <a href="#" class="order-btn" data-modal-target="trademark-ip-registration-modal">Get Started <i class="fab fa-whatsapp"></i></a>
                 </div>
                 <!-- Travel & Visa Booking -->
-                <div class="service-card" data-service="travel-visa-booking" data-category="immigration">
+                <div class="service-card" data-service="travel-visa-booking" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-plane"></i></div>
                     <h3>Travel & Visa Booking</h3>
                     <p>Flight bookings and visa application support with tour packages and document checklist assistance.</p>
@@ -1743,52 +2221,52 @@
                 
 
                 <!-- New E-Ticketing Service Card -->
-                <div class="service-card featured" data-service="e-ticketing" data-category="e-ticketing">
+                <div class="service-card featured" data-service="e-ticketing" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-bus"></i></div>
                     <h3>ZamServe E-Ticketing</h3>
                     <p>Book your bus tickets with ease across Zambia. Convenient and reliable.</p>
                     <a href="#" class="order-btn" data-modal-target="e-ticketing-modal">Book Now <i class="fab fa-whatsapp"></i></a>
                 </div>
                 
-                <div class="service-card featured" data-service="pacra-registration" data-category="business-registration">
+                <div class="service-card featured" data-service="pacra-registration" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
                     <h3>PACRA Registration</h3>
                     <p>Streamline your business registration with our expert assistance.</p>
                     <a href="#" class="order-btn" data-modal-target="pacra-registration-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card featured" data-service="logo-design" data-category="design-branding">
+                <div class="service-card featured" data-service="logo-design" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
                     <h3>Logo Design</h3>
                     <p>Create a memorable brand identity with our professional logo design.</p>
                     <a href="#" class="order-btn" data-modal-target="logo-design-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="pacra-business-name" data-category="business-registration">
+                <div class="service-card" data-service="pacra-business-name" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-building"></i></div>
                     <h3>PACRA Business Name Registration</h3>
                     <p>Register your business name efficiently and legally with our support.</p>
                     <a href="#" class="order-btn" data-modal-target="pacra-business-name-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="company-registration" data-category="business-registration">
+                <div class="service-card" data-service="company-registration" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-registered"></i></div>
                     <h3>Company Registration</h3>
                     <p>Full company registration services, including all legal requirements.</p>
                     <a href="#" class="order-btn" data-modal-target="company-registration-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="ngo-church-registration" data-category="business-registration">
+                <div class="service-card" data-service="ngo-church-registration" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-church"></i></div>
                     <h3>NGO/Church Registration</h3>
                     <p>Expert guidance for registering your Non-Governmental Organization or Church.</p>
                     <a href="#" class="order-btn" data-modal-target="ngo-church-registration-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="tender-prequalification" data-category="business-registration">
+                <div class="service-card" data-service="tender-prequalification" data-category="travel-visa">
                     <div class="service-icon"><i class="fas fa-gavel"></i></div>
                     <h3>Tender/Prequalification Document Submission</h3>
                     <p>Professional assistance with tender and prequalification document preparation and submission.</p>
                     <a href="#" class="order-btn" data-modal-target="tender-prequalification-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="zra-tax-registration" data-category="business-registration">
+                <div class="service-card" data-service="zra-tax-registration" data-category="compliance">
                     <div class="service-icon"><i class="fas fa-percent"></i></div>
                     <h3>ZRA Tax Registration & TPIN</h3>
                     <p>Ensure tax compliance with our ZRA tax registration and TPIN services.</p>
@@ -1814,102 +2292,102 @@
                     <a href="#" class="order-btn" data-modal-target="spouse-permit-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="business-card-design" data-category="design-branding">
+                <div class="service-card" data-service="business-card-design" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-address-card"></i></div>
                     <h3>Business Card Design</h3>
                     <p>Professional business card designs that make a lasting impression.</p>
                     <a href="#" class="order-btn" data-modal-target="business-card-design-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="flyer-brochure-design" data-category="design-branding">
+                <div class="service-card" data-service="flyer-brochure-design" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-leaf"></i></div>
                     <h3>Flyer/Brochure Design</h3>
                     <p>Eye-catching flyers and brochures to effectively promote your services.</p>
                     <a href="#" class="order-btn" data-modal-target="flyer-brochure-design-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="website-design" data-category="design-branding">
+                <div class="service-card" data-service="website-design" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-globe"></i></div>
                     <h3>Website Design</h3>
                     <p>Modern and responsive website designs tailored to your business needs.</p>
                     <a href="#" class="order-btn" data-modal-target="website-design-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="company-profile-design" data-category="design-branding">
+                <div class="service-card" data-service="company-profile-design" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-building"></i></div>
                     <h3>Company Profile Design</h3>
                     <p>Craft a compelling company profile that highlights your strengths and vision.</p>
                     <a href="#" class="order-btn" data-modal-target="company-profile-design-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="document-printing" data-category="printing">
+                <div class="service-card" data-service="document-printing" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-print"></i></div>
                     <h3>Document Printing</h3>
                     <p>High-quality document printing services for all your business needs.</p>
                     <a href="#" class="order-btn" data-modal-target="document-printing-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="large-format-printing" data-category="printing">
+                <div class="service-card" data-service="large-format-printing" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-pager"></i></div>
                     <h3>Large Format Printing</h3>
                     <p>Specialized printing for banners, posters, and other large-scale materials.</p>
                     <a href="#" class="order-btn" data-modal-target="large-format-printing-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="tshirt-printing" data-category="printing">
+                <div class="service-card" data-service="tshirt-printing" data-category="immigration">
                     <div class="service-icon"><i class="fas fa-tshirt"></i></div>
                     <h3>T-Shirt Printing</h3>
                     <p>Custom T-shirt printing for branding, events, or personal use.</p>
                     <a href="#" class="order-btn" data-modal-target="tshirt-printing-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="business-proposals" data-category="writing">
+                <div class="service-card" data-service="business-proposals" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
                     <h3>Business Proposals</h3>
                     <p>Craft compelling business proposals that win over clients and investors.</p>
                     <a href="#" class="order-btn" data-modal-target="business-proposals-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="research-proposals" data-category="writing">
+                <div class="service-card" data-service="research-proposals" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-flask"></i></div>
                     <h3>Research Proposals</h3>
                     <p>Develop well-structured research proposals for academic or professional projects.</p>
                     <a href="#" class="order-btn" data-modal-target="research-proposals-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="dissertations-theses" data-category="writing">
+                <div class="service-card" data-service="dissertations-theses" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-book-reader"></i></div>
                     <h3>Dissertations/Theses</h3>
                     <p>Comprehensive support for writing and structuring dissertations and theses.</p>
                     <a href="#" class="order-btn" data-modal-target="dissertations-theses-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="report-writing" data-category="writing">
+                <div class="service-card" data-service="report-writing" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
                     <h3>Report Writing</h3>
                     <p>Clear and concise report writing services for various business and academic needs.</p>
                     <a href="#" class="order-btn" data-modal-target="report-writing-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="editing-proofreading" data-category="writing">
+                <div class="service-card" data-service="editing-proofreading" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-edit"></i></div>
                     <h3>Editing & Proofreading</h3>
                     <p>Ensure your documents are flawless with our professional editing and proofreading services.</p>
                     <a href="#" class="order-btn" data-modal-target="editing-proofreading-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="general-office-supplies" data-category="office-supplies">
+                <div class="service-card" data-service="general-office-supplies" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-boxes"></i></div>
                     <h3>General Office Supplies</h3>
                     <p>Reliable supply of all essential office materials to keep your operations smooth.</p>
                     <a href="#" class="order-btn" data-modal-target="general-office-supplies-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
-                <div class="service-card" data-service="printer-cartridges-toners" data-category="office-supplies">
+                <div class="service-card" data-service="printer-cartridges-toners" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-tint"></i></div>
                     <h3>Printer Cartridges & Toners</h3>
                     <p>Quality printer cartridges and toners for all major brands.</p>
                     <a href="#" class="order-btn" data-modal-target="printer-cartridges-toners-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="general-supply" data-category="supply">
+                <div class="service-card" data-service="general-supply" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-truck"></i></div>
                     <h3>General Supply</h3>
                     <p>Comprehensive supply chain solutions for various business requirements.</p>
                     <a href="#" class="order-btn" data-modal-target="general-supply-modal">Order Now <i class="fab fa-whatsapp"></i></a>
                 </div>
 
-                <div class="service-card" data-service="construction-services" data-category="construction">
+                <div class="service-card" data-service="construction-services" data-category="business-writing">
                     <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
                     <h3>Construction Services</h3>
                     <p>Reliable and quality construction services for diverse projects.</p>
@@ -1938,7 +2416,7 @@
             </div>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="/About us.jpeg" alt="About Us">
+                    <img src="/About us.gif" alt="About Us">
                 </div>
                 <div class="about-text">
                     <h2>Driving Success Through Strategic Investment & Service Delivery</h2>
@@ -1954,6 +2432,41 @@
             </div>
         </div>
     </section>
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-header">
+            <h2>Meet Our Team</h2>
+            <p>The people behind Golden Success Investments / ZamServe Hub.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="/our team/team-member-1.jpg.jpeg" alt="Alick Chali">
+                </div>
+                <h3>Alick Chali</h3>
+                <p class="role">CEO &amp; Project Lead</p>
+                <p class="bio">As Founder and CEO of GSIL, Alick Chali is an entrepreneur dedicated to building innovative solutions in technology and finance. He is also the founder of the fintech startup Golden Swift Money Transfer, which focuses on transforming cross-border payments in Africa.</p>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="team-card">
+                <div class="team-photo">
+                    <img src="/our team/team-member-2.jpg.jpeg" alt="Chibuye Rashidy">
+                </div>
+                <h3>Chibuye Rashidy</h3>
+                <p class="role">Managing Director</p>
+                <p class="bio">As Managing Director of GSIL and Ramachi Media Graphics, Chibuye Rashidy drives project execution and brand strategy by integrating his expertise in creative media with business operations. He is a creative force committed to excellence across both design and business platforms.</p>
+                <div class="team-socials">
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
     <section class="stats">
         <div class="container">
             <div class="section-header">
@@ -2211,6 +2724,7 @@
                 <ul>
                     <li><a href="#services-hub">ZamServe Hub</a></li>
                     <li><a href="#about">About Us</a></li>
+                    <li><a href="#team">Our Team</a></li>
                     <li><a href="#features">Why Us</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -2237,15 +2751,307 @@
             </div>
             <div class="footer-column">
                 <h3>Contact Info</h3>
-                <p><i class="fas fa-map-marker-alt"></i> Golden Success House, Lusaka, Zambia</p>
+                <p><i class="fas fa-map-marker-alt"></i> Freedomway opposite west gate </p>
                 <p><i class="fas fa-envelope"></i> info@goldensuccess.com</p>
-                <p><i class="fas fa-phone-alt"></i> +260 971 234567</p>
+                <p><i class="fas fa-phone-alt"></i> +260 975 801455</p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Golden Success Investments Limited. All Rights Reserved.</p>
         </div>
-    </footer>
+    <div class="service-modal" id="investor-permit-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Investors Permit</h2>
+      <p>Professional assistance preparing and submitting permit applications.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Application Assistance</h3>
+          <div class="service-price">Custom Quote</div>
+          <div class="service-time">Timeline provided after review</div>
+          <div class="service-description">Document checklist, preparation and submission.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Investors Permit.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="study-permit-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Study Permit</h2>
+      <p>Professional assistance preparing and submitting permit applications.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Application Assistance</h3>
+          <div class="service-price">Custom Quote</div>
+          <div class="service-time">Timeline provided after review</div>
+          <div class="service-description">Document checklist, preparation and submission.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Study Permit.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="legal-assistance-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Legal Assistance</h2>
+      <p>Choose the legal document you need help with.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>NDAs</h3><div class="service-price">Custom Quote</div><div class="service-description">Drafting and review.</div></div>
+        <div class="service-item"><h3>Contracts</h3><div class="service-price">Custom Quote</div><div class="service-description">Commercial and service contracts.</div></div>
+        <div class="service-item"><h3>MOUs</h3><div class="service-price">Custom Quote</div><div class="service-description">Partnership agreements.</div></div>
+        <div class="service-item"><h3>Affidavit</h3><div class="service-price">Custom Quote</div><div class="service-description">Preparation and witnessing support.</div></div>
+        <div class="service-item"><h3>Notary</h3><div class="service-price">Custom Quote</div><div class="service-description">Notarization coordination.</div></div>
+        <div class="service-item"><h3>Shareholders Agreement</h3><div class="service-price">Custom Quote</div><div class="service-description">Founders and shareholders terms.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Legal Assistance.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="tax-clearance-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Tax Clearance</h2>
+      <p>Obtain your ZRA tax clearance fast.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Tax Clearance Processing</h3>
+          <div class="service-price">Custom Quote</div>
+          <div class="service-time">Typically 1–3 days</div>
+          <div class="service-description">We manage the application and follow-ups.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Tax Clearance.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="ncc-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>NCC</h2>
+      <p>NCC registration and renewals for contractors.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Registration / Renewal</h3>
+          <div class="service-price">Custom Quote</div>
+          <div class="service-time">Varies</div>
+          <div class="service-description">Checklist, document prep and submission.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: NCC.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="house-plans-architectural-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>House Plans & Architectural</h2>
+      <p>Drawings and finishing schedules.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>2D/3D Plans</h3><div class="service-price">Custom Quote</div><div class="service-description">Site plan, floor plans and elevations.</div></div>
+        <div class="service-item"><h3>Finishing Schedules</h3><div class="service-price">Custom Quote</div><div class="service-description">Materials, finishes and quantities.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: House Plans & Architectural.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="research-proposal-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Research Proposal</h2>
+      <p>Research Proposal services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Research Proposal.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="essays-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Essays</h2>
+      <p>Essays services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Essays.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="school-assignments-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>School Assignments</h2>
+      <p>School Assignments services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: School Assignments.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="literature-review-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Literature Review</h2>
+      <p>Literature Review services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Literature Review.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="dissertation-writing-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Dissertation Writing</h2>
+      <p>Dissertation Writing services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Dissertation Writing.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="thesis-writing-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Thesis Writing</h2>
+      <p>Thesis Writing services with references and formatting.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Outline, sources and draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Thesis Writing.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="grant-proposal-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Grant Proposal</h2>
+      <p>Grant Proposal support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Grant Proposal.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="cv-cover-letter-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>CV & Cover Letter Writing</h2>
+      <p>CV & Cover Letter Writing support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: CV & Cover Letter Writing.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="concept-notes-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Concept Notes</h2>
+      <p>Concept Notes support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Concept Notes.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="pitch-deck-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Pitch Deck</h2>
+      <p>Pitch Deck support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Pitch Deck.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="proposal-reviews-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Proposal Reviews</h2>
+      <p>Proposal Reviews support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Proposal Reviews.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="editing-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Editing</h2>
+      <p>Editing support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Editing.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div><div class="service-modal" id="proofreading-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Proofreading</h2>
+      <p>Proofreading support tailored to your needs.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item"><h3>Standard Package</h3><div class="service-price">Custom Quote</div><div class="service-description">Briefing + deliverable draft.</div></div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I want to order: Proofreading.">Request via WhatsApp</button>
+    </div>
+  </div>
+</div></footer>
 
     <a href="https://wa.me/260971234567" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
@@ -2860,40 +3666,28 @@
     </div>
 
     <div class="service-modal" id="e-passport-assist-modal">
-        <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <div class="modal-header">
-            <h2>e-Passport Assist</h2>
-            <p>Complete passport processing support for Zambian citizens.</p>
+        <div class="modal-content"><div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>e‑Passport Assist</h2>
+      <p>Fast assistance for e‑Passport applications and renewals. Processing time: 2–5 days.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>New Passport</h3>
+          <div class="service-price">K2,000</div>
+          <div class="service-time">2–5 days</div>
+          <div class="service-description">Guided checklist, booking & paperwork.</div>
         </div>
-        <div class="service-pricing-grid">
-            <div class="service-item">
-                <h3>New Passport Application</h3>
-                <p class="service-price">ZMW 800 - 1,200</p>
-                <p class="service-time">5-10 Business Days</p>
-                <p class="service-description">Complete assistance with new passport applications including document preparation.</p>
-                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-new">
-                    <i class="fab fa-whatsapp"></i> Get Started
-                </button>
-            </div>
-            <div class="service-item">
-                <h3>Passport Renewal</h3>
-                <p class="service-price">ZMW 600 - 900</p>
-                <p class="service-time">3-7 Business Days</p>
-                <p class="service-description">Fast and efficient passport renewal services for expired or expiring passports.</p>
-                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-renewal">
-                    <i class="fab fa-whatsapp"></i> Get Started
-                </button>
-            </div>
-            <div class="service-item">
-                <h3>Child Passport Services</h3>
-                <p class="service-price">ZMW 700 - 1,000</p>
-                <p class="service-time">5-10 Business Days</p>
-                <p class="service-description">Specialized assistance for child passport applications and renewals.</p>
-                <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-passport-child">
-                    <i class="fab fa-whatsapp"></i> Get Started
-                </button>
-            </div>
+        <div class="service-item">
+          <h3>Renewal</h3>
+          <div class="service-price">K1,500</div>
+          <div class="service-time">2–5 days</div>
+          <div class="service-description">Update details and renew your current passport.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I need e‑Passport assistance.">Start via WhatsApp</button>
+    </div></div>
         </div>
         <div class="order-form-container" id="form-passport-new" style="display: none;">
             <h4>New Passport Application</h4>
@@ -3047,7 +3841,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>PACRA Registration Service</h2>
-                <p>Comprehensive assistance for registering your business name or company with PACRA.</p>
+                <p>Comprehensive assistance for registering your business name or company with PACRA.<br><br>We also assist with <strong>Bank account opening</strong> and <strong>Drafting board resolutions</strong>.</p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3137,7 +3931,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Professional Logo Design</h2>
-                <p>Crafting unique and memorable logos that represent your brand's identity.</p>
+                <p>Crafting unique and memorable logos that represent your brand's identity.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3224,7 +4018,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>PACRA Business Name Registration</h2>
-                <p>Efficient and hassle-free registration of your business name with PACRA.</p>
+                <p>Efficient and hassle-free registration of your business name with PACRA.<br><br>We also assist with <strong>Bank account opening</strong> and <strong>Drafting board resolutions</strong>.</p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3298,7 +4092,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Company Registration Service</h2>
-                <p>Complete company incorporation services from name reservation to certificate issuance.</p>
+                <p>Complete company incorporation services from name reservation to certificate issuance.<br><br>We also assist with <strong>Bank account opening</strong> and <strong>Drafting board resolutions</strong>.</p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3383,13 +4177,12 @@
             </div>
         </div>
     </div>
-
     <div class="service-modal" id="ngo-church-registration-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>NGO/Church Registration Service</h2>
-                <p>Dedicated support for the registration of Non-Governmental Organizations and Churches in Zambia.</p>
+                <p>Dedicated support for the registration of Non-Governmental Organizations and Churches in Zambia.<br><br>We also assist with <strong>Bank account opening</strong> and <strong>Drafting board resolutions</strong>.</p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3849,7 +4642,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Business Card Design</h2>
-                <p>Professional and impactful business card designs that leave a lasting impression.</p>
+                <p>Professional and impactful business card designs that leave a lasting impression.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -3936,7 +4729,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Flyer & Brochure Design</h2>
-                <p>Engaging designs for flyers and brochures to effectively communicate your message.</p>
+                <p>Engaging designs for flyers and brochures to effectively communicate your message.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -4013,15 +4806,12 @@
             </div>
         </div>
     </div>
-    
-    
-
     <div class="service-modal" id="website-design-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Website Design Services</h2>
-                <p>Creating modern, responsive, and user-friendly websites tailored to your business needs.</p>
+                <p>Creating modern, responsive, and user-friendly websites tailored to your business needs.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -4095,7 +4885,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Company Profile Design</h2>
-                <p>Crafting professional and impactful company profiles that showcase your business effectively.</p>
+                <p>Crafting professional and impactful company profiles that showcase your business effectively.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -4173,31 +4963,28 @@
     </div>
 
     <div class="service-modal" id="document-printing-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-header">
-                <h2>Document Printing Services</h2>
-                <p>High-quality printing for all your essential documents, reports, and presentations.</p>
-            </div>
-            <div class="service-pricing-grid">
-                <div class="service-item">
-                    <h3>Black & White Printing</h3>
-                    <p class="service-price">ZMW 0.50 - 1.00 / page</p>
-                    <p class="service-time">Same Day - 24 Hrs</p>
-                    <p class="service-description">Cost-effective printing for text documents. Pricing varies by volume.</p>
-                    <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-dp-bw">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
-                <div class="service-item">
-                    <h3>Color Printing</h3>
-                    <p class="service-price">ZMW 1.50 - 3.00 / page</p>
-                    <p class="service-time">Same Day - 24 Hrs</p>
-                    <p class="service-description">Vibrant color printing for professional documents and graphics. Pricing varies by volume.</p>
-                    <button type="button" class="whatsapp-contact open-specific-form-btn" data-form-target="form-dp-color">
-                        <i class="fab fa-whatsapp"></i> Order Now
-                    </button>
-                </div>
+        <div class="modal-content"><div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Document Printing</h2>
+      <p>Affordable, high‑quality printing for your documents.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Black & White</h3>
+          <div class="service-price">Custom Quote</div>
+          <div class="service-time">Per page</div>
+          <div class="service-description">Crisp mono prints for forms and documents.</div>
+        </div>
+        <div class="service-item">
+          <h3>Color</h3>
+          <div class="service-price">K10</div>
+          <div class="service-time">Per page</div>
+          <div class="service-description">Vibrant color prints for images and presentations.</div>
+        </div>
+      </div>
+      <button class="whatsapp-contact" data-message="Hello! I'd like to print documents. B&W K3 and Color K10.">Order via WhatsApp</button>
+    </div></div>
             </div>
             <div class="order-form-container" id="form-dp-bw" style="display: none;">
                 <h4>Place Your Black & White Printing Order</h4>
@@ -4259,7 +5046,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>Large Format Printing Services</h2>
-                <p>High-impact large format printing for banners, posters, blueprints, and signage.</p>
+                <p>High-impact large format printing for banners, posters, blueprints, and signage.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -4341,7 +5128,7 @@
             <span class="close-modal">&times;</span>
             <div class="modal-header">
                 <h2>T-Shirt Printing Services</h2>
-                <p>Custom T-shirt printing for events, branding, promotional giveaways, or personal use.</p>
+                <p>Custom T-shirt printing for events, branding, promotional giveaways, or personal use.<br><br><em>All communications and work are handled by <strong>Byte&Berry</strong>.</em></p>
             </div>
             <div class="service-pricing-grid">
                 <div class="service-item">
@@ -4589,7 +5376,6 @@
             </div>
         </div>
     </div>
-
     <div class="service-modal" id="dissertations-theses-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -5128,7 +5914,6 @@
             </div>
         </div>
     </div>
-
     <div class="service-modal" id="construction-services-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -5667,5 +6452,704 @@
             });
         });
     </script>
+
+<script>
+// Simple .doc download (Word opens HTML .doc)
+// This script should be in the main <script> tag of your HTML file.
+(function(){
+  const WA_NUMBER = '260971234567';
+  
+  function sendWA(msg){
+    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+
+  // Event listener for Branding and Compliance submit buttons
+  document.addEventListener('click', function(e){
+    // Handle the Branding modal submit button
+    const brandBtn = e.target.closest('.branding-submit');
+    if(brandBtn) {
+      const form = document.getElementById('branding-form');
+      if(!form) return;
+      
+      const company = form.querySelector('#branding-company')?.value?.trim();
+      const items = Array.from(form.querySelectorAll('input[name="branding"]:checked')).map(i => i.value);
+      const name = form.querySelector('#branding-name')?.value?.trim();
+      const phone = form.querySelector('#branding-phone')?.value?.trim();
+      const notes = form.querySelector('#branding-notes')?.value?.trim();
+      
+      const lines = [
+        `New Quote Request for ${company || '—'}`,
+        items.length ? `Items: ${items.join(', ')}` : 'Items: —',
+        name ? `Contact: ${name}` : null,
+        phone ? `Client WhatsApp: ${phone}` : null,
+        notes ? `Notes: ${notes}` : null
+      ].filter(Boolean); // Removes any empty lines
+      
+      sendWA(lines.join('\n'));
+    }
+
+    // Handle the Compliance modal submit button
+    const compBtn = e.target.closest('.compliance-submit');
+    if(compBtn) {
+      const form = document.getElementById('e-compliance-form');
+      if(!form) return;
+
+      const items = Array.from(form.querySelectorAll('input[name="compliance"]:checked')).map(i => i.value);
+      const msg = items.length
+        ? `E-Compliance Filing Request\nSelected: ${items.join(', ')}`
+        : 'E-Compliance Filing Request\nSelected: (none)';
+      
+      sendWA(msg);
+    }
+  });
+})();
+</script>
+
+<!-- Web Development Modal -->
+<div class="service-modal" id="web-development-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Web Development</h2>
+      <p>Choose a package and we'll get your project started.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Starter Website</h3>
+          <div class="service-price">K7,500 – K10,000</div>
+
+      
+    
+
+      
+    
+          <div class="service-time">3–5 pages · 1–2 weeks</div>
+          <div class="service-description">Mobile‑responsive design, basic SEO, contact form, and analytics.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+        <div class="service-item">
+          <h3>Business Website</h3>
+          <div class="service-price">K12,000 – K18,000</div>
+          <div class="service-time">6–10 pages + blog · 2–3 weeks</div>
+          <div class="service-description">Blog/CMS, SEO setup, on‑page optimization, consultation & handover.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+        <div class="service-item">
+          <h3>Enterprise Website</h3>
+          <div class="service-price">K20,000+</div>
+          <div class="service-time">Custom · 4+ weeks</div>
+          <div class="service-description">Dashboards, integrations, role‑based access, and advanced security.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<!-- App Development Modal -->
+<div class="service-modal" id="app-development-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>App Development</h2>
+      <p>From MVPs to enterprise apps — choose what fits your roadmap.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Basic App</h3>
+          <div class="service-price">K25,000 – K35,000</div>
+
+      <form class="order-form-container interest-form" data-service="App Development" style="display:none">
+        <h4>Tell us about your project</h4>
+        <div class="form-group">
+          <label for="app-development-name">Your Name</label>
+          <input type="text" id="app-development-name" placeholder="e.g., Jane Banda">
+        </div>
+        <div class="form-group">
+          <label for="app-development-phone">Your WhatsApp Number</label>
+          <input type="text" id="app-development-phone" placeholder="+260 7...">
+        </div>
+        <div class="form-group">
+          <label for="app-development-details">Project Details (Optional)</label>
+          <textarea id="app-development-details" rows="3" placeholder="Brief context, goals, references..."></textarea>
+        </div>
+        <button type="button" class="whatsapp-contact interest-submit" data-wa="260760580949">
+          <i class="fab fa-whatsapp"></i> Send Inquiry via WhatsApp
+        </button>
+      </form>
+    
+          <div class="service-time">3–4 weeks</div>
+          <div class="service-description">Auth, Firebase backend, basic screens, and analytics.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+        <div class="service-item">
+          <h3>Business App</h3>
+          <div class="service-price">K40,000 – K60,000</div>
+          <div class="service-time">6–8 weeks</div>
+          <div class="service-description">Profiles, payments, admin dashboard, and deployment.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+        <div class="service-item">
+          <h3>Enterprise App</h3>
+          <div class="service-price">K70,000+</div>
+          <div class="service-time">2–3 months</div>
+          <div class="service-description">Custom workflows, APIs, advanced analytics, scalable backend.</div>
+<button type="button" class="whatsapp-contact pkg-wa">Inquire on WhatsApp</button>
+<button type="button" class="btn btn-primary interest-btn">I'm Interested</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const DEFAULT_WA = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260971234567';
+  function openWA(msg, wa){ 
+    const num = (wa && wa.trim()) ? wa.trim() : DEFAULT_WA;
+    window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank'); 
+  }
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.bb-wa');
+    if(!btn) return;
+    const wa = btn.getAttribute('data-wa');
+    const source = btn.getAttribute('data-source') || 'Project';
+    const form = btn.closest('form');
+    const nameField = form ? form.querySelector('input[type="text"]') : null;
+    const notesField = form ? form.querySelector('textarea') : null;
+    const name = nameField && nameField.value ? nameField.value.trim() : '';
+    const notes = notesField && notesField.value ? notesField.value.trim() : '';
+    const lines = [
+      `New ${source} Request`,
+      name ? `Company: ${name}` : null,
+      notes ? `Notes: ${notes}` : null
+    ].filter(Boolean);
+    openWA(lines.join('\n'), wa);
+  });
+})();
+</script>
+
+<script>
+(function(){
+  const BB_WA = '260760580949';
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.pkg-wa');
+    if(!btn) return;
+    const modal = btn.closest('.service-modal');
+    if(!modal) return;
+    const service = modal.querySelector('.modal-header h2')?.textContent.trim() || 'Service';
+    const item = btn.closest('.service-item');
+    const pkg = item ? (item.querySelector('h3')?.textContent.trim() || 'Package') : 'Package';
+    const fullName = `${service} - ${pkg}`;
+    const msg = `Hello! I'm visiting the Golden Success website and I am interested in the following package: ${fullName}. Could you please provide more information?`;
+    window.open(`https://wa.me/${BB_WA}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+})();
+</script>
+
+
+
+</script>
+
+<!-- New Modals -->
+<div class="service-modal" id="language-translation-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Language Translation Assist</h2>
+      <p>Certified‑style translations with proofreading and formatting.</p>
+    </div>
+    <form class="order-form" data-service-type="Language Translation Assist">
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input type="text" name="fullName" required></div>
+        <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+        <div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>From</label>
+          <select name="sourceLanguage">
+            <option>English</option><option>French</option><option>Spanish</option><option>Swahili</option>
+          </select>
+        </div>
+        <div class="form-group"><label>To</label>
+          <select name="targetLanguage">
+            <option>French</option><option>English</option><option>Spanish</option><option>Swahili</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Speed</label>
+          <select name="speed"><option>Standard (48‑72h)</option><option>Express (24h)</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Upload Document</label><input type="file" name="file"></div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Send to WhatsApp</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="service-modal" id="legal-document-assist-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Legal Document Assist</h2>
+      <p>Download a starter template or request a custom draft.</p>
+    </div>
+    <div class="template-list">
+      <button class="download-template" data-template="board_resolution">Board Resolution (.doc)</button>
+      <button class="download-template" data-template="power_of_attorney">General Power of Attorney (.doc)</button>
+      <button class="download-template" data-template="non_disclosure">Non‑Disclosure Agreement (.doc)</button>
+      <button class="download-template" data-template="service_contract">Service Agreement (.doc)</button>
+    </div>
+    <hr>
+    <form class="order-form" data-service-type="Legal Document Assist">
+      <div class="form-group"><label>Full Name</label><input type="text" name="fullName" required></div>
+      <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+      <div class="form-group"><label>Phone</label><input type="tel" name="phone" required></div>
+      <div class="form-group"><label>Document Type</label><input type="text" name="documentType" placeholder="e.g., Shareholders Agreement"></div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Request Draft via WhatsApp</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="service-modal" id="bank-assist-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Bank Assist Services</h2>
+      <p>We assemble KYC packs and coordinate with your preferred bank.</p>
+    </div>
+    <ul class="checklist">
+      <li>Company Profile (PDF)</li>
+      <li>PACRA, TPIN, NHIMA, NAPSA certificates</li>
+      <li>Directors' NRC/Passports</li>
+      <li>Proof of Address</li>
+    </ul>
+    <form class="order-form" data-service-type="Bank Assist Services">
+      <div class="form-group"><label>Company Name</label><input type="text" name="companyName" required></div>
+      <div class="form-group"><label>Preferred Bank</label><input type="text" name="bank"></div>
+      <div class="form-group"><label>Contact Email</label><input type="email" name="email" required></div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Request Bank Pack</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="service-modal" id="tender-bidding-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Tender Bidding Services</h2>
+      <p>We handle registrations, document compilation, and proposal submissions.</p>
+    </div>
+    
+  </div>
+</div>
+
+<div class="service-modal" id="e-compliance-modal">
+  <div class="modal-content"><div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>E‑Compliance Services</h2>
+      <p>Track filings and request assistance directly from this dashboard.</p>
+    </div>
+    <div class="modal-body">
+      <form id="e-compliance-form" class="order-form-container">
+        <h4>Compliance Dashboard</h4>
+        <div class="compliance-grid checks-only">
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="PACRA Annual Return">
+              <div>
+                <h4>PACRA Annual Return</h4>
+                <div class="status-pill due"><span class="dot"></span> Due</div>
+              </div>
+            </div>
+          </label>
+
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="ZRA Tax Return">
+              <div>
+                <h4>ZRA Tax Return</h4>
+                <div class="status-pill filed"><span class="dot"></span> Filed</div>
+              </div>
+            </div>
+          </label>
+
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="NHIMA Registration/Return">
+              <div>
+                <h4>NHIMA Registration/Return</h4>
+                <div class="status-pill due"><span class="dot"></span> Due</div>
+              </div>
+            </div>
+          </label>
+
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="NAPSA Return">
+              <div>
+                <h4>NAPSA Return</h4>
+                <div class="status-pill overdue"><span class="dot"></span> Overdue</div>
+              </div>
+            </div>
+          </label>
+
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="Workers Compensation">
+              <div>
+                <h4>Workers Compensation</h4>
+                <div class="status-pill due"><span class="dot"></span> Due</div>
+              </div>
+            </div>
+          </label>
+
+          <label class="compliance-card">
+            <div class="row">
+              <input type="checkbox" name="compliance" value="NCC">
+              <div>
+                <h4>NCC</h4>
+                <div class="status-pill filed"><span class="dot"></span> Filed</div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <button type="button" class="whatsapp-contact compliance-submit">
+          <i class="fab fa-whatsapp"></i> Request Filing for Selected Items
+        </button>
+      </form>
+    </div></div>
+    </div>
+  </div>
+</div>
+
+<div class="service-modal" id="branding-print-modal">
+  <div class="modal-content"><div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Corporate Branding & Print Suite</h2>
+      <p>Choose the items you need and we'll send print‑ready files.</p>
+    </div>
+    <div class="modal-body">
+      <form id="branding-form" class="order-form-container">
+        <h4>Request a Quote</h4>
+        <div class="form-group">
+          <label for="branding-company">Brand/Company</label>
+          <input type="text" id="branding-company" placeholder="e.g., Golden Success Investments" required>
+        </div>
+
+        <div class="form-group">
+          <label>Select Items</label>
+          <div class="check-grid">
+            <label class="check-card"><input type="checkbox" name="branding" value="Logo"><span>Logo</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Business Cards"><span>Business Cards</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Letterhead"><span>Letterhead</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Email Signature"><span>Email Signature</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Invoice/Quotation Books"><span>Invoice/Quotation Books</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Date Stamp"><span>Date Stamp</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Banners"><span>Banners</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Company Profile"><span>Company Profile</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Branded T‑Shirts"><span>Branded T‑Shirts</span></label>
+            <label class="check-card"><input type="checkbox" name="branding" value="Large Format Printing"><span>Large Format Printing</span></label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="branding-name">Contact Name</label>
+            <input type="text" id="branding-name" placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="branding-phone">WhatsApp Number</label>
+            <input type="text" id="branding-phone" placeholder="+2609...">
+          </div>
+          <div class="form-group">
+            <label for="branding-notes">Notes</label>
+            <input type="text" id="branding-notes" placeholder="Any specific sizes, colors, or counts?">
+          </div>
+        </div>
+
+        <button type="button" class="whatsapp-contact branding-submit">
+          <i class="fab fa-whatsapp"></i> Request Quote
+        </button>
+      </form>
+    </div></div>
+</div>
+
+<div class="service-modal" id="stickers-labels-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Product Stickers & Labels</h2>
+      <p>Compliant designs with barcodes and nutrition tables on request.</p>
+    </div>
+    <form class="order-form" data-service-type="Stickers & Labels">
+      <div class="form-row">
+        <div class="form-group"><label>Product Name</label><input type="text" name="product" required></div>
+        <div class="form-group"><label>Size</label><input type="text" name="size" placeholder="e.g., 100x80mm"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Barcode (digits)</label><input type="text" name="barcode"></div>
+        <div class="form-group"><label>Include QR</label>
+          <select name="qr"><option>No</option><option>Yes</option></select>
+        </div>
+      </div>
+      <div class="form-group"><label>Regulatory Notes</label><textarea name="notes" rows="3" placeholder="ingredients, expiry, nutrition table, etc."></textarea></div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Get Designs</button></div>
+    </form>
+  </div>
+</div>
+
+<div class="service-modal" id="travel-visa-modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <div class="modal-header">
+      <h2>Travel & Visa Applications</h2>
+      <p>Flights, visas, and tour packages — we'll plan everything.</p>
+    </div>
+    <form class="order-form" data-service-type="Travel & Visa">
+      <div class="form-row">
+        <div class="form-group"><label>Traveler Name</label><input type="text" name="name" required></div>
+        <div class="form-group"><label>Destination</label><input type="text" name="destination" required></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Visa Type</label>
+          <select name="visaType"><option>Tourist</option><option>Business</option><option>Transit</option></select>
+        </div>
+        <div class="form-group"><label>Travel Dates</label><input type="text" name="dates" placeholder="e.g., 12–18 Sept 2025"></div>
+      </div>
+      <div class="form-group"><label>Upload Docs (passport, photo, bank statement)</label><input type="file" name="docs" multiple></div>
+      <div class="form-actions"><button type="submit" class="btn btn-primary">Plan My Trip</button></div>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const WA_NUMBER = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260971234567';
+  function sendWA(msg){ window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank'); }
+
+  // Branding submit
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.branding-submit');
+    if(!btn) return;
+    const form = document.getElementById('branding-form');
+    if(!form) return;
+    const company = form.querySelector('#branding-company')?.value?.trim();
+    const items = Array.from(form.querySelectorAll('input[name="branding"]:checked')).map(i => i.value);
+    const name = form.querySelector('#branding-name')?.value?.trim();
+    const phone = form.querySelector('#branding-phone')?.value?.trim();
+    const notes = form.querySelector('#branding-notes')?.value?.trim();
+    const lines = [
+      `New Quote Request for ${company || '—'}`,
+      items.length ? `Items: ${items.join(', ')}` : 'Items: —',
+      name ? `Contact: ${name}` : null,
+      phone ? `Client WhatsApp: ${phone}` : null,
+      notes ? `Notes: ${notes}` : null
+    ].filter(Boolean);
+    sendWA(lines.join('\n'));
+  });
+
+  // Compliance submit
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.compliance-submit');
+    if(!btn) return;
+    const form = document.getElementById('e-compliance-form');
+    if(!form) return;
+    const items = Array.from(form.querySelectorAll('input[name="compliance"]:checked')).map(i => i.value);
+    const msg = items.length
+      ? `E-Compliance Filing Request\nSelected: ${items.join(', ')}`
+      : 'E-Compliance Filing Request\nSelected: (none)';
+    sendWA(msg);
+  });
+})();
+</script>
+
+<!-- Web Development Modal -->
+<div class="service-modal" id="web-development-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>Web Development</h2>
+      <p>Choose a package and we'll get your project started.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Starter Website</h3>
+          <div class="service-price">K7,500 – K10,000</div>
+
+      <form class="order-form-container interest-form" data-service="Web Development" style="display:none">
+        <h4>Tell us about your project</h4>
+        <div class="form-group">
+          <label for="web-development-name">Your Name</label>
+          <input type="text" id="web-development-name" placeholder="e.g., Jane Banda">
+        </div>
+        <div class="form-group">
+          <label for="web-development-phone">Your WhatsApp Number</label>
+          <input type="text" id="web-development-phone" placeholder="+260 7...">
+        </div>
+        <div class="form-group">
+          <label for="web-development-details">Project Details (Optional)</label>
+          <textarea id="web-development-details" rows="3" placeholder="Brief context, goals, references..."></textarea>
+        </div>
+        <button type="button" class="whatsapp-contact interest-submit" data-wa="260760580949">
+          <i class="fab fa-whatsapp"></i> Send Inquiry via WhatsApp
+        </button>
+      </form>
+    
+          <div class="service-time">3–5 pages · 1–2 weeks</div>
+          <div class="service-description">Mobile‑responsive design, basic SEO, contact form, and analytics.</div>
+        </div>
+        <div class="service-item">
+          <h3>Business Website</h3>
+          <div class="service-price">K12,000 – K18,000</div>
+          <div class="service-time">6–10 pages + blog · 2–3 weeks</div>
+          <div class="service-description">Blog/CMS, SEO setup, on‑page optimization, consultation & handover.</div>
+        </div>
+        <div class="service-item">
+          <h3>Enterprise Website</h3>
+          <div class="service-price">K20,000+</div>
+          <div class="service-time">Custom · 4+ weeks</div>
+          <div class="service-description">Dashboards, integrations, role‑based access, and advanced security.</div>
+        </div>
+      </div>
+      <form id="web-dev-form" class="order-form-container">
+        <h4>Project Brief</h4>
+        <div class="form-group">
+          <label for="web-company">Company / Brand</label>
+          <input type="text" id="web-company" placeholder="e.g., Golden Success Investments">
+        </div>
+        <div class="form-group">
+          <label for="web-notes">Notes</label>
+          <textarea id="web-notes" rows="3" placeholder="Tell us about your goals, pages, and any references..."></textarea>
+        </div>
+        <button type="button" class="whatsapp-contact bb-wa" data-wa="260760580949" data-source="Web Development">
+          <i class="fab fa-whatsapp"></i> Request Quote (Byte&Berry)
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- App Development Modal -->
+<div class="service-modal" id="app-development-modal">
+  <div class="modal-content">
+    <div class="close-modal" data-close-modal>&times;</div>
+    <div class="modal-header">
+      <h2>App Development</h2>
+      <p>From MVPs to enterprise apps — choose what fits your roadmap.</p>
+    </div>
+    <div class="modal-body">
+      <div class="service-pricing-grid">
+        <div class="service-item">
+          <h3>Basic App</h3>
+          <div class="service-price">K25,000 – K35,000</div>
+
+      <form class="order-form-container interest-form" data-service="App Development" style="display:none">
+        <h4>Tell us about your project</h4>
+        <div class="form-group">
+          <label for="app-development-name">Your Name</label>
+          <input type="text" id="app-development-name" placeholder="e.g., Jane Banda">
+        </div>
+        <div class="form-group">
+          <label for="app-development-phone">Your WhatsApp Number</label>
+          <input type="text" id="app-development-phone" placeholder="+260 7...">
+        </div>
+        <div class="form-group">
+          <label for="app-development-details">Project Details (Optional)</label>
+          <textarea id="app-development-details" rows="3" placeholder="Brief context, goals, references..."></textarea>
+        </div>
+        <button type="button" class="whatsapp-contact interest-submit" data-wa="260760580949">
+          <i class="fab fa-whatsapp"></i> Send Inquiry via WhatsApp
+        </button>
+      </form>
+    
+          <div class="service-time">3–4 weeks</div>
+          <div class="service-description">Auth, Firebase backend, basic screens, and analytics.</div>
+        </div>
+        <div class="service-item">
+          <h3>Business App</h3>
+          <div class="service-price">K40,000 – K60,000</div>
+          <div class="service-time">6–8 weeks</div>
+          <div class="service-description">Profiles, payments, admin dashboard, and deployment.</div>
+        </div>
+        <div class="service-item">
+          <h3>Enterprise App</h3>
+          <div class="service-price">K70,000+</div>
+          <div class="service-time">2–3 months</div>
+          <div class="service-description">Custom workflows, APIs, advanced analytics, scalable backend.</div>
+        </div>
+      </div>
+      <form id="app-dev-form" class="order-form-container">
+        <h4>Project Brief</h4>
+        <div class="form-group">
+          <label for="app-company">Company / Brand</label>
+          <input type="text" id="app-company" placeholder="e.g., Golden Success Investments">
+        </div>
+        <div class="form-group">
+          <label for="app-notes">Notes</label>
+          <textarea id="app-notes" rows="3" placeholder="Describe target users, features, and timelines..."></textarea>
+        </div>
+        <button type="button" class="whatsapp-contact bb-wa" data-wa="260760580949" data-source="App Development">
+          <i class="fab fa-whatsapp"></i> Request Quote (Byte&Berry)
+        </button>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  const DEFAULT_WA = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260971234567';
+  function openWA(msg, wa){ 
+    const num = (wa && wa.trim()) ? wa.trim() : DEFAULT_WA;
+    window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank'); 
+  }
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.bb-wa');
+    if(!btn) return;
+    const wa = btn.getAttribute('data-wa');
+    const source = btn.getAttribute('data-source') || 'Project';
+    const form = btn.closest('form');
+    const nameField = form ? form.querySelector('input[type="text"]') : null;
+    const notesField = form ? form.querySelector('textarea') : null;
+    const name = nameField && nameField.value ? nameField.value.trim() : '';
+    const notes = notesField && notesField.value ? notesField.value.trim() : '';
+    const lines = [
+      `New ${source} Request`,
+      name ? `Company: ${name}` : null,
+      notes ? `Notes: ${notes}` : null
+    ].filter(Boolean);
+    openWA(lines.join('\n'), wa);
+  });
+})();
+</script>
+
+
+
+<script>
+(function(){
+  const BB_WA = '260760580949';
+  document.addEventListener('click', function(e){
+    const btn = e.target.closest('.pkg-wa');
+    if(!btn) return;
+    const modal = btn.closest('.service-modal');
+    if(!modal) return;
+    const service = modal.querySelector('.modal-header h2')?.textContent.trim() || 'Service';
+    const item = btn.closest('.service-item');
+    const pkg = item ? (item.querySelector('h3')?.textContent.trim() || 'Package') : 'Package';
+    const fullName = `${service} - ${pkg}`;
+    const msg = `Hello! I'm visiting the Golden Success website and I am interested in the following package: ${fullName}. Could you please provide more information?`;
+    window.open(`https://wa.me/${BB_WA}?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+})();
+</script>
+
 </body>
 </html>
