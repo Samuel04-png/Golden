@@ -7666,15 +7666,10 @@ function getImageFolder(serviceName) {
 }
 
 // Simple .doc download (Word opens HTML .doc)
-// This script should be in the main <script> tag of your HTML file.
-(function(){
-  const WA_NUMBER = '260978124432';
-
 // Simple .doc download (Word opens HTML .doc)
 // This script should be in the main <script> tag of your HTML file.
 (function(){
-  const WA_NUMBER = '260971234567';
-
+  const WA_NUMBER = '260978124432';
   
   function sendWA(msg){
     window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank');
@@ -8007,10 +8002,7 @@ function getImageFolder(serviceName) {
 </div>
 <script>
 (function(){
-
   const DEFAULT_WA = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260978124432';
-
-  const DEFAULT_WA = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260971234567';
 
   function openWA(msg, wa){ 
     const num = (wa && wa.trim()) ? wa.trim() : DEFAULT_WA;
@@ -8038,10 +8030,7 @@ function getImageFolder(serviceName) {
 
 <script>
 (function(){
-
   const BB_WA = '260978124432';
-
-  const BB_WA = '260760580949';
 
   document.addEventListener('click', function(e){
     const btn = e.target.closest('.pkg-wa');
@@ -8056,10 +8045,6 @@ function getImageFolder(serviceName) {
     window.open(`https://wa.me/${BB_WA}?text=${encodeURIComponent(msg)}`, '_blank');
   });
 })();
-</script>
-
-
-
 </script>
 
 <!-- New Modals -->
@@ -8336,10 +8321,7 @@ function getImageFolder(serviceName) {
 
 <script>
 (function(){
-
   const WA_NUMBER = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260978124432';
-
-  const WA_NUMBER = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260971234567';
 
   function sendWA(msg){ window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`, '_blank'); }
 
@@ -8380,10 +8362,6 @@ function getImageFolder(serviceName) {
 </script>
 
 
-
-<script>
-(function(){
-  const DEFAULT_WA = (typeof whatsappPhoneNumber !== 'undefined' && whatsappPhoneNumber) ? whatsappPhoneNumber : '260978124432';
 
 <!-- Web Development Modal -->
 <div class="service-modal" id="web-development-modal">
@@ -8550,10 +8528,7 @@ function getImageFolder(serviceName) {
 
 <script>
 (function(){
-
   const BB_WA = '260978124432';
-
-  const BB_WA = '260760580949';
 
   document.addEventListener('click', function(e){
     const btn = e.target.closest('.pkg-wa');
