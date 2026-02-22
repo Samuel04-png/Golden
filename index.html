@@ -9726,18 +9726,22 @@
                 // Form toggling (kept for compatibility)
                 const openFormButtons = document.querySelectorAll('.open-specific-form-btn');
                 openFormButtons.forEach(button => {
-                    button.addEventListener('click', () => {
+                    button.addEventListener('click', (e) => {
+                        e.preventDefault();
                         const formId = button.getAttribute('data-form-target');
-                        const formContainer = document.getElementById(formId);
 
                         // Hide all forms in this modal
                         const modalContent = button.closest('.modal-content');
+                        if (!modalContent) return;
                         modalContent.querySelectorAll('.order-form-container').forEach(form => {
                             form.style.display = 'none';
                         });
 
                         // Show selected form
-                        formContainer.style.display = 'block';
+                        const formContainer = modalContent.querySelector(`#${formId}`) || document.getElementById(formId);
+                        if (formContainer) {
+                            formContainer.style.display = 'block';
+                        }
                     });
                 });
             });
@@ -9790,10 +9794,15 @@
 
                 // Service Modal Functionality (Robust delegation)
                 document.body.addEventListener('click', (e) => {
-                    const btn = e.target.closest('.order-btn');
-                    if (btn) {
+                    const btn = e.target.closest('[data-modal-target]');
+                    if (!btn) return;
+
+                    const modalId = btn.getAttribute('data-modal-target');
+                    if (!modalId) return;
+
+                    const modal = document.getElementById(modalId);
+                    if (modal) {
                         e.preventDefault();
-                        const modalId = btn.getAttribute('data-modal-target');
                         openModal(modalId);
                     }
                 });
@@ -9862,6 +9871,7 @@
                         e.preventDefault();
                         const formTargetId = btn.getAttribute('data-form-target');
                         const currentModalContent = btn.closest('.modal-content');
+                        if (!currentModalContent) return;
 
                         // Hide all forms in the current modal content
                         currentModalContent.querySelectorAll('.order-form-container').forEach(form => {
@@ -9869,7 +9879,7 @@
                         });
 
                         // Display the targeted form
-                        const targetForm = document.getElementById(formTargetId);
+                        const targetForm = currentModalContent.querySelector(`#${formTargetId}`) || document.getElementById(formTargetId);
                         if (targetForm) {
                             targetForm.style.display = 'block';
                             targetForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -10343,9 +10353,12 @@
 
                 // Event listener for Branding and Compliance submit buttons
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
+
                     // Handle the Branding modal submit button
                     const brandBtn = e.target.closest('.branding-submit');
                     if (brandBtn) {
+                        e.preventDefault();
                         const form = document.getElementById('branding-form');
                         if (!form) return;
 
@@ -10369,6 +10382,7 @@
                     // Handle the Compliance modal submit button
                     const compBtn = e.target.closest('.compliance-submit');
                     if (compBtn) {
+                        e.preventDefault();
                         const form = document.getElementById('e-compliance-form');
                         if (!form) return;
 
@@ -10392,8 +10406,10 @@
                     window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank');
                 }
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.bb-wa');
                     if (!btn) return;
+                    e.preventDefault();
                     const wa = btn.getAttribute('data-wa');
                     const source = btn.getAttribute('data-source') || 'Project';
                     const form = btn.closest('form');
@@ -10415,8 +10431,10 @@
             (function () {
                 const BB_WA = '260978124432';
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.pkg-wa');
                     if (!btn) return;
+                    e.preventDefault();
                     const modal = btn.closest('.service-modal');
                     if (!modal) return;
                     const service = modal.querySelector('.modal-header h2')?.textContent.trim() || 'Service';
@@ -10767,8 +10785,10 @@
 
                 // Branding submit
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.branding-submit');
                     if (!btn) return;
+                    e.preventDefault();
                     const form = document.getElementById('branding-form');
                     if (!form) return;
                     const company = form.querySelector('#branding-company')?.value?.trim();
@@ -10788,8 +10808,10 @@
 
                 // Compliance submit
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.compliance-submit');
                     if (!btn) return;
+                    e.preventDefault();
                     const form = document.getElementById('e-compliance-form');
                     if (!form) return;
                     const items = Array.from(form.querySelectorAll('input[name="compliance"]:checked')).map(i => i.value);
@@ -11342,7 +11364,7 @@
                             </ul>
                         </div>
                         <button type="button" class="whatsapp-btn open-specific-form-btn"
-                            data-form-target="form-residence-new">
+                            data-form-target="form-residence">
                             <i class="fab fa-whatsapp"></i> Order Now
                         </button>
                     </div>
@@ -15387,8 +15409,10 @@
                     window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`, '_blank');
                 }
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.bb-wa');
                     if (!btn) return;
+                    e.preventDefault();
                     const wa = btn.getAttribute('data-wa');
                     const source = btn.getAttribute('data-source') || 'Project';
                     const form = btn.closest('form');
@@ -15412,8 +15436,10 @@
             (function () {
                 const BB_WA = '260978124432';
                 document.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
                     const btn = e.target.closest('.pkg-wa');
                     if (!btn) return;
+                    e.preventDefault();
                     const modal = btn.closest('.service-modal');
                     if (!modal) return;
                     const service = modal.querySelector('.modal-header h2')?.textContent.trim() || 'Service';
@@ -15436,9 +15462,11 @@
                 document.body.addEventListener('click', function (e) {
                     const btn = e.target.closest('.open-specific-form-btn');
                     if (!btn) return;
+                    if (e.defaultPrevented) return;
 
                     const targetId = btn.getAttribute('data-form-target');
-                    const targetForm = document.getElementById(targetId);
+                    const currentModalContent = btn.closest('.modal-content');
+                    const targetForm = (currentModalContent && currentModalContent.querySelector(`#${targetId}`)) || document.getElementById(targetId);
 
                     if (targetForm) {
                         // Toggle visibility
@@ -15515,6 +15543,7 @@
                 document.body.addEventListener('submit', function (e) {
                     const form = e.target.closest('form.order-form');
                     if (!form) return;
+                    if (e.defaultPrevented) return;
 
                     e.preventDefault();
 
@@ -15538,6 +15567,52 @@
                     window.open(url, '_blank');
                 });
 
+                // 4. Legacy Structured Forms Handler (.service-form)
+                document.body.addEventListener('submit', function (e) {
+                    const form = e.target.closest('form.service-form');
+                    if (!form) return;
+                    if (e.defaultPrevented) return;
+
+                    e.preventDefault();
+
+                    const modalTitle = form.closest('.modal-content')?.querySelector('.modal-header h2')?.textContent?.trim() || 'Service Inquiry';
+                    const lines = [
+                        `NEW REQUEST: ${modalTitle.toUpperCase()}`,
+                        ''
+                    ];
+
+                    form.querySelectorAll('input, select, textarea').forEach(field => {
+                        const type = (field.type || '').toLowerCase();
+                        if (type === 'submit' || type === 'button' || type === 'hidden') return;
+
+                        let label = '';
+                        if (field.id) {
+                            const linkedLabel = form.querySelector(`label[for="${field.id}"]`);
+                            if (linkedLabel) label = linkedLabel.textContent;
+                        }
+                        if (!label) {
+                            const inlineLabel = field.closest('.form-group')?.querySelector('label');
+                            if (inlineLabel) label = inlineLabel.textContent;
+                        }
+                        label = (label || field.name || field.id || 'Field').replace('*', '').trim();
+
+                        if (type === 'file') {
+                            const fileNames = field.files && field.files.length > 0
+                                ? Array.from(field.files).map(file => file.name).join(', ')
+                                : '';
+                            if (fileNames) lines.push(`${label}: ${fileNames}`);
+                            return;
+                        }
+
+                        const value = (field.value || '').trim();
+                        if (!value) return;
+                        lines.push(`${label}: ${value}`);
+                    });
+
+                    lines.push('', 'Sent via Website Universal Handler');
+                    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+                });
+
                 // Digital Tabs Handler
                 document.querySelectorAll('.tab-btn').forEach(btn => {
                     btn.addEventListener('click', () => {
@@ -15554,17 +15629,22 @@
 
                 // Byte&Berry Routing Logic
                 document.body.addEventListener('click', function (e) {
+                    if (e.defaultPrevented) return;
+
                     // Package Inquiry
                     const pkgBtn = e.target.closest('.pkg-wa');
                     if (pkgBtn) {
+                        e.preventDefault();
                         const pkg = pkgBtn.getAttribute('data-pkg');
                         const msg = `Hi Byte&Berry, I'm inquiring about the *${pkg}* for my project.`;
                         window.open(`https://wa.me/260978124432?text=${encodeURIComponent(msg)}`, '_blank');
+                        return;
                     }
 
                     // Brief Submit
                     const briefBtn = e.target.closest('.bb-wa');
                     if (briefBtn) {
+                        e.preventDefault();
                         const form = briefBtn.closest('form');
                         const name = form.querySelector('[name="fullName"]')?.value?.trim();
                         const details = form.querySelector('[name="details"]')?.value?.trim();
